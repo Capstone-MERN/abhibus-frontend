@@ -1,5 +1,11 @@
+import TourSearch from "./TourSearch";
+
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <TourSearch />
+    </>
+  );
 };
 
 export default Home;
