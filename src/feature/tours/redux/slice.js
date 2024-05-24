@@ -1,56 +1,83 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BoardingStops, DroppingStops } from "../dummyData";
+import { BoardingStops, DroppingStops, data, layoutData } from "../dummyData";
 
 const toursSlice = createSlice({
   name: "tours",
   initialState: {
-    Boarding: {
-      /*
-        45678:{
-          stopId:6454,
-          name:"bhopal Chouraha"
-        }
-      */
+    // Boarding: {
+    //   /*
+    //     45678:{
+    //       stopId:6454,
+    //       name:"bhopal Chouraha"
+    //     }
+    //   */
+    // },
+    // Dropping: {
+    //   /*
+    //     45678:{
+    //       stopId:6454,
+    //       name:"bhopal Chouraha"
+    //     }
+    //   */
+    // },
+    // BoardingStops,
+    // /*
+    //     BoardingStops:{
+    //       tourId:[{}]
+    //       tourId:[{}]
+    //     }
+    //   */
+    // DroppingStops,
+    // /*
+    //     DroppingStops:{
+    //       tourId:[{}]
+    //       tourId:[{}]
+    //     }
+    //   */
+    // selectedSeats: {
+    //   /*
+    //     tourId:[{
+    //       seatNumber:"L1",
+    //       price:8000
+    //     }]
+    //     tourId:[{
+    //       seatNumber:"L1",
+    //       price:8000
+    //     }]
+
+    //   */
+    // },
+    // priceFilter: {
+    //   /*
+    //     tourId: 'all' || '800' || '1500'
+    //   */
+    // },
+    tours: {
+      data: data,
+      // TODO: make it dynamic during api integration
+      apiStatus: "success",
     },
-    Dropping: {
-      /*
-        45678:{
-          stopId:6454,
-          name:"bhopal Chouraha"
-        }
-      */
+    layouts: {
+      54851: {
+        apiStatus: "success",
+        data: layoutData,
+      },
     },
-    BoardingStops,
-    /*
-        BoardingStops:{
-          tourId:[{}]
-          tourId:[{}]
-        }
-      */
-    DroppingStops,
-    /*
-        DroppingStops:{
-          tourId:[{}]
-          tourId:[{}]
-        }
-      */
-    selectedSeats: {
-      /*
-        tourId:[{
-          seatNumber:"L1",
-          price:8000
-        }]
-        tourId:[{
-          seatNumber:"L1",
-          price:8000
-        }]
-        
-      */
-    },
-    priceFilter: {
-      /*
-        tourId: 'all' || '800' || '1500'
-      */
+    selectedTour: {
+      seats: [
+        { seatId: "L4", price: 1000 },
+        { seatId: "L5", price: 200 },
+      ],
+      boardingPoint: {
+        name: "",
+        description: "",
+        stopId: 2930,
+      },
+      droppingPoint: {
+        name: "",
+        description: "",
+        stopId: 2930,
+      },
     },
   },
   reducers: {

@@ -1,0 +1,27 @@
+.seat-layout {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #e3e3e3;
+  background-color: #fff;
+  .hierarchy {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+    padding: 10px;
+    .row {
+      display: flex;
+      justify-content: space-evenly;
+      gap: 2px;
+      .seat {
+        padding: 10px;
+        border: 1px solid #e3e3e3;
+        font-size: 0.8rem;
+        width: 80px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import Amenities from "./Amenities";
 import BoardingsAndDroppings from "./BoardingsAndDroppings";
-import SeatLayout from "./SeatLayout/SeatLayout";
+import BottomSection from "./SeatLayout/BottomSection";
 import "../Styles/Tour.scss";
 import { CircleIcon, formatDate, formatTime } from "./constantfuncs";
 
@@ -62,30 +61,15 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
         </div>
       </div>
       {showLayout && (
-        <div className="layout">
-          <SeatLayout
-            tourId={tour.tourId}
-            availableSeats={tour.availableSeats}
-          />
-        </div>
+        <BottomSection
+          tourId={tour.tourId}
+          availableSeats={tour.availableSeats}
+          sourceStops={tour.sourceStops}
+          destinationStops={tour.destinationStops}
+        />
       )}
     </div>
   );
-};
-
-Tour.propTypes = {
-  tour: PropTypes.shape({
-    busPartner: PropTypes.string.isRequired,
-    busType: PropTypes.string.isRequired,
-    startTime: PropTypes.string.isRequired,
-    endTime: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    minPrice: PropTypes.number.isRequired,
-    availableSeats: PropTypes.number.isRequired,
-    tourId: PropTypes.string.isRequired,
-  }).isRequired,
-  sourceCity: PropTypes.string.isRequired,
-  destinationCity: PropTypes.string.isRequired,
 };
 
 export default Tour;

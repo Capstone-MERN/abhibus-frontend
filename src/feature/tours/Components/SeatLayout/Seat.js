@@ -5,18 +5,18 @@ import { addSelectedSeat, removeSelectedSeat } from "../../redux/slice";
 import { SeatIcon } from "../constantfuncs";
 import { usePriceFilter } from "../../redux/selectors";
 
-const Seat = ({ seat, tourId }) => {
+const Seat = ({ seat }) => {
   const [selected, setSelected] = useState(false);
-  const selectedPrice = usePriceFilter(tourId);
+  // const selectedPrice = usePriceFilter(tourId);
   const dispatch = useDispatch();
 
   const handleSelect = () => {
-    if (selected) {
-      dispatch(removeSelectedSeat({ tourId, seatNumber: seat.seatNumber }));
-    } else {
-      dispatch(addSelectedSeat({ tourId, seatDetails: seat }));
-    }
-    setSelected(!selected);
+    // if (selected) {
+    //   dispatch(removeSelectedSeat({ tourId, seatNumber: seat.seatNumber }));
+    // } else {
+    //   dispatch(addSelectedSeat({ tourId, seatDetails: seat }));
+    // }
+    // setSelected(!selected);
   };
 
   const setFillColor = () => {
@@ -24,11 +24,11 @@ const Seat = ({ seat, tourId }) => {
   };
 
   const setStrokeColor = () => {
-    return selected
-      ? "#3DC070"
-      : selectedPrice == seat.price
-      ? "#3AB56A"
-      : "#C6C6C6";
+    // return selected
+    //   ? "#3DC070"
+    //   : selectedPrice == seat.price
+    //   ? "#3AB56A"
+    //   : "#C6C6C6";
   };
 
   return (
@@ -37,7 +37,7 @@ const Seat = ({ seat, tourId }) => {
         seatType={seat.seatType}
         fill={setFillColor()}
         stroke={setStrokeColor()}
-        filter={selectedPrice == seat.price}
+        filter={true}
         selected={selected}
         gender={seat.gender}
       />

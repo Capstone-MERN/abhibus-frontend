@@ -1,264 +1,73 @@
-export const data = [
-  {
-    busId: 544322,
-    tourId: 54851,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54858,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54852,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54853,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54854,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54855,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-  {
-    busId: 544322,
-    tourId: 54856,
-    busType: "AC", // AC | NON-AC
-    busPartner: "ABC Travels",
-    amenities: [
-      { icon: "wifi", label: "Wi-Fi" },
-      { icon: "power", label: "Power Outlet" },
-      { icon: "tv", label: "TV" },
-    ],
-    startTime: 24555255, // epoch time
-    endTime: 55455554, // epoch time
-    duration: "08:30 Hrs",
-    availableSeats: 25,
-    minPrice: 800,
-    maxPrice: 2500,
-    sourceStops: [
-      {
-        stopId: 1,
-        arrivalTime: 1715846400,
-      },
-      {
-        stopId: 2,
-        arrivalTime: 1715853600,
-      },
-    ],
-    destinationStops: [
-      {
-        stopId: 4,
-        arrivalTime: 1715868000,
-      },
-      {
-        stopId: 5,
-        arrivalTime: 1715887200,
-      },
-    ],
-  },
-];
+export const data = {
+  boardingPoints: [
+    {
+      stopId: 1,
+      directions: "Kondapur",
+      name: "Opposite Harsha toyota showroom",
+    },
+    {
+      stopId: 2,
+      directions: "Kukatpally",
+      name: "Near Hyderabad house , beside vegetable yard.",
+    },
+    {
+      stopId: 3,
+      directions: "Charminar",
+      name: "Opposite hyderabad central mall",
+    },
+  ],
+  droppingPoints: [
+    {
+      stopId: 4,
+      directions: "Chickballapur",
+      name: "Chickballapur bypass",
+    },
+    {
+      stopId: 5,
+      directions: "Devanahalli Airport",
+      name: "Devanahalli airport bypass road",
+    },
+  ],
+  tours: [
+    {
+      busId: 544322,
+      tourId: 54851,
+      busType: "AC", // AC | NON-AC
+      busPartner: "ABC Travels",
+      amenities: [
+        { icon: "wifi", label: "Wi-Fi" },
+        { icon: "power", label: "Power Outlet" },
+        { icon: "tv", label: "TV" },
+      ],
+      startTime: 24555255, // epoch time
+      endTime: 55455554, // epoch time
+      duration: "08:30 Hrs",
+      availableSeats: 25,
+      minPrice: 800,
+      maxPrice: 2500,
+      sourceStops: [
+        {
+          stopId: 1,
+          arrivalTime: 1715846400,
+        },
+        {
+          stopId: 2,
+          arrivalTime: 1715853600,
+        },
+      ],
+      destinationStops: [
+        {
+          stopId: 4,
+          arrivalTime: 1715868000,
+        },
+        {
+          stopId: 5,
+          arrivalTime: 1715887200,
+        },
+      ],
+    },
+  ],
+};
 
 export const layoutData = {
   layout: {

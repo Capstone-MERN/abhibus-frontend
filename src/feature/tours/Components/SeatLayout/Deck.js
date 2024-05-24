@@ -1,41 +1,44 @@
-import { SteeringIcon } from "../constantfuncs";
-import Row from "./Row";
-import PropTypes from "prop-types";
+import "../../Styles/hierarchy.scss";
 
-const Deck = ({ deckName, tourId, layout }) => {
-  const rows = new Array(3).fill().map(() => []);
+export const DeckTypes = {
+  LOWER: "LOWER",
+  UPPER: "UPPER",
+};
 
-  layout.forEach((item) => {
-    rows[item.row].push(item);
+const Deck = ({ deckName, layout }) => {
+  let rows = 0,
+    cols = 0;
+  layout.forEach((seat) => {
+    rows = Math.max(seat.row, rows);
+    cols = Math.max(seat.column, cols);
+  });
+  rows++;
+  cols++;
+  const grid = Array(rows).fill([]);
+
+  for (let i = 0; i < grid.length; i++) {
+    grid[i] = Array(cols).fill(null);
+  }
+  layout.forEach((seat) => {
+    grid[seat.row][seat.column] = seat;
   });
 
   return (
-    <div className="deck">
-      <div className="deck-name">
-        {deckName === "Lower" && <SteeringIcon />}
-        <h3>{deckName}</h3>
-      </div>
-      <div className="seats">
-        {rows.map((row, index) =>
-          row.length > 0 ? <Row key={index} tourId={tourId} row={row} /> : null
-        )}
+    <div className="seat-layout">
+      <b>{deckName}</b>
+      <div className="hierarchy">
+        {grid.map((row) => {
+          return (
+            <div className="row">
+              {row.map((seat) => {
+                return <div className="seat">{seat?.seatNumber}</div>;
+              })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-};
-
-Deck.propTypes = {
-  deckName: PropTypes.string.isRequired,
-  tourId: PropTypes.string.isRequired,
-  layout: PropTypes.arrayOf(
-    PropTypes.shape({
-      row: PropTypes.number.isRequired,
-      seatNumber: PropTypes.string.isRequired,
-      seatType: PropTypes.string,
-      gender: PropTypes.string,
-      price: PropTypes.number,
-    })
-  ).isRequired,
 };
 
 export default Deck;
