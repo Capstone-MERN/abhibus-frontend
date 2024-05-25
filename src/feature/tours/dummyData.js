@@ -48,7 +48,11 @@ export const data = {
       sourceStops: [
         {
           stopId: 1,
+<<<<<<< HEAD
           arrivalTime: 5465641155,
+=======
+          arrivalTime: 1715846400,
+>>>>>>> d2ec69785dd04bf350a9d1a13a2232452aed95c9
         },
         {
           stopId: 2,
@@ -66,6 +70,7 @@ export const data = {
         },
       ],
     },
+<<<<<<< HEAD
     {
       busId: 544322,
       tourId: 54852,
@@ -141,6 +146,8 @@ export const data = {
       ],
     },
    
+=======
+>>>>>>> d2ec69785dd04bf350a9d1a13a2232452aed95c9
   ],
 };
 
