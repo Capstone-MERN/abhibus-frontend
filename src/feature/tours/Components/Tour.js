@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import Amenities from "./Amenities";
 import BoardingsAndDroppings from "./BoardingsAndDroppings";
-import SeatLayout from "./SeatLayout/SeatLayout";
 import "../Styles/Tour.scss";
 import { CircleIcon, formatDate, formatTime } from "./constantfuncs";
+import BottomSection from "./BottomSection";
+import { useDispatch } from "react-redux";
+import { removeSeletedTour, setSelectedTour } from "../redux/slice";
 
 const Tour = ({ tour, sourceCity, destinationCity }) => {
   const [showLayout, setShowLayout] = useState(false);
@@ -63,9 +64,9 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
       </div>
       {showLayout && (
         <div className="layout">
-          <SeatLayout
-            tourId={tour.tourId}
+          <BottomSection
             availableSeats={tour.availableSeats}
+            tourId={tour.tourId}
           />
         </div>
       )}
@@ -73,19 +74,19 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
   );
 };
 
-Tour.propTypes = {
-  tour: PropTypes.shape({
-    busPartner: PropTypes.string.isRequired,
-    busType: PropTypes.string.isRequired,
-    startTime: PropTypes.string.isRequired,
-    endTime: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    minPrice: PropTypes.number.isRequired,
-    availableSeats: PropTypes.number.isRequired,
-    tourId: PropTypes.string.isRequired,
-  }).isRequired,
-  sourceCity: PropTypes.string.isRequired,
-  destinationCity: PropTypes.string.isRequired,
-};
+// Tour.propTypes = {
+//   tour: PropTypes.shape({
+//     busPartner: PropTypes.string.isRequired,
+//     busType: PropTypes.string.isRequired,
+//     startTime: PropTypes.string.isRequired,
+//     endTime: PropTypes.string.isRequired,
+//     duration: PropTypes.string.isRequired,
+//     minPrice: PropTypes.number.isRequired,
+//     availableSeats: PropTypes.number.isRequired,
+//     tourId: PropTypes.string.isRequired,
+//   }).isRequired,
+//   sourceCity: PropTypes.string.isRequired,
+//   destinationCity: PropTypes.string.isRequired,
+// };
 
 export default Tour;

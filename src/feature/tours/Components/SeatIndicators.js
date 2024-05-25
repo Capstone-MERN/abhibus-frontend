@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../../Styles/SeatLayout.scss";
-import { SquareIcon } from "../constantfuncs";
+import { SquareIcon } from "./constantfuncs";
+import "../Styles/SeatIndicators.scss";
 
 const SeatIndicators = ({ availableSeats }) => {
   return (
@@ -41,8 +41,8 @@ const SeatIndicators = ({ availableSeats }) => {
   );
 };
 
-SeatIndicators.propTypes = {
-  availableSeats: PropTypes.number.isRequired,
-};
+// SeatIndicators.propTypes = {
+//   availableSeats: PropTypes.number.isRequired,
+// };
 
 export default SeatIndicators;

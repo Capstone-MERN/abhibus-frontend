@@ -1,0 +1,48 @@
+@import "variables";
+
+.layout_container {
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  // gap: 20px;
+
+  .seat_layout {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+
+
+    @media (max-width: 950px) {
+      flex-wrap: wrap;
+
+      .stops {
+        flex-grow: 1;
+      }
+
+    }
+
+    .layout {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 520px;
+      
+    }
+    
+
+
+    .point-name {
+      font-weight: lighter;
+      font-size: 1.1rem;
+    }
+
+    .point-direction {
+      color: #868696;
+      font-size: 0.7rem;
+    }
+  }
+}

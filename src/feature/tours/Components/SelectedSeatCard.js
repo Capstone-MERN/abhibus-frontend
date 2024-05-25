@@ -1,23 +1,14 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import {
-  useBoarding,
-  useDropping,
-  useSelectedSeats,
-} from "../../redux/selectors";
 
-const SelectedSeatCard = ({ tourId }) => {
-  const boarding = useBoarding(tourId);
-  const dropping = useDropping(tourId);
-  const selectedSeats = useSelectedSeats(tourId);
+const SelectedSeatCard = ({ boarding, dropping, selectedSeats }) => {
+  const isPointsSelected =
+    boarding?.stopId && dropping?.stopId && selectedSeats?.length > 0;
 
-  const isPointsSelected = useMemo(() => {
-    return boarding.stopId && dropping.stopId && selectedSeats.length > 0;
-  }, [boarding.stopId, dropping.stopId, selectedSeats]);
-
-  const totalPrice = useMemo(() => {
-    return selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
-  }, [selectedSeats]);
+  const totalPrice =
+    selectedSeats?.length > 0
+      ? selectedSeats.reduce((sum, seat) => sum + seat.price, 0)
+      : 0;
 
   return (
     <>
@@ -45,8 +36,8 @@ const SelectedSeatCard = ({ tourId }) => {
   );
 };
 
-SelectedSeatCard.propTypes = {
-  tourId: PropTypes.string.isRequired,
-};
+// SelectedSeatCard.propTypes = {
+//   tourId: PropTypes.string.isRequired,
+// };
 
 export default SelectedSeatCard;

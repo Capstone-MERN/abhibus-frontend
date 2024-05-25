@@ -1,15 +1,14 @@
-import { usePriceFilter, useSelectedSeats } from "../../redux/selectors";
+import "../Styles/PriceFilter.scss";
 
-const PriceFilter = ({ prices, handlePriceChange, tourId }) => {
-  const selectedPrice = usePriceFilter(tourId);
-  const selectedSeats = useSelectedSeats(tourId);
-
+const PriceFilter = (props) => {
+  const { prices, handlePriceChange, selectedPrice, selectedSeats } = props;
   const countSelectedSeat = (price) => {
     let count = 0;
 
-    selectedSeats.forEach((seat) => {
-      if (seat.price == price) count++;
-    });
+    if (selectedSeats)
+      selectedSeats.forEach((seat) => {
+        if (seat.price == price) count++;
+      });
     return count;
   };
   return (

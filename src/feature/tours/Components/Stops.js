@@ -2,29 +2,16 @@ import React, { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import Points from "./Points";
 import SelectedPointCard from "./SelectedPointCard";
-import {
-  useBoarding,
-  useBoardingStops,
-  useDropping,
-  useDroppingStops,
-} from "../../redux/selectors";
+import "../Styles/Stops.scss";
 
-const Stops = ({ pointName, tourId }) => {
-  const boardingStops = useBoardingStops();
-  const droppingStops = useDroppingStops();
-  const boarding = useBoarding(tourId);
-  const dropping = useDropping(tourId);
-
-  const stopsArray = pointName === "Boarding" ? boardingStops : droppingStops;
-  const selectedStop = pointName === "Boarding" ? boarding : dropping;
-
+const Stops = ({ pointName, points, selectedStop, handleChange }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredStops = useMemo(() => {
-    return stopsArray.filter((stop) =>
+    return points.filter((stop) =>
       stop.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [stopsArray, searchQuery]);
+  }, [points, searchQuery]);
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -44,23 +31,22 @@ const Stops = ({ pointName, tourId }) => {
       </div>
       <div className="point-list">
         {filteredStops.map((stop) => (
-          <Points
-            key={stop.stopId}
-            tourId={tourId}
-            stop={stop}
-            pointName={pointName}
-          />
+          <Points key={stop.stopId} stop={stop} handleChange={handleChange} />
         ))}
       </div>
     </div>
   ) : (
-    <SelectedPointCard tourId={tourId} pointName={pointName} />
+    <SelectedPointCard
+      pointName={pointName}
+      pointDetails={selectedStop}
+      handleChange={handleChange}
+    />
   );
 };
 
-Stops.propTypes = {
-  pointName: PropTypes.string.isRequired,
-  tourId: PropTypes.string.isRequired,
-};
+// Stops.propTypes = {
+//   pointName: PropTypes.string.isRequired,
+//   tourId: PropTypes.string.isRequired,
+// };
 
 export default Stops;

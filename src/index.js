@@ -13,7 +13,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="home" element={<>Home route</>} />
-        <Route path="" element={<Tours />} />
+        <Route
+          path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
+          element={<Tours />}
+        />
       </Routes>
     </BrowserRouter>
   </Provider>
