@@ -4,10 +4,15 @@ import BoardingsAndDroppings from "./BoardingsAndDroppings";
 import "../Styles/Tour.scss";
 import { CircleIcon, formatDate, formatTime } from "./constantfuncs";
 import BottomSection from "./BottomSection";
+import { useSelector } from "react-redux";
+import { stopPointsSelector } from "../redux/selectors";
 
 const Tour = ({ tour, sourceCity, destinationCity }) => {
   const [showLayout, setShowLayout] = useState(false);
 
+  const { boardingPoints, droppingPoints } = useSelector((state) =>
+    stopPointsSelector(state, tour.tourId)
+  );
   const toggleLayout = () => {
     setShowLayout(!showLayout);
   };
@@ -42,8 +47,11 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
             </div>
           </div>
           <div className="dropdowns">
-            <BoardingsAndDroppings />
-            <Amenities />
+            <BoardingsAndDroppings
+              boardingPoints={boardingPoints}
+              droppingPoints={droppingPoints}
+            />
+            <Amenities amenities={tour.amenities} />
           </div>
         </div>
         <div className="right_col">

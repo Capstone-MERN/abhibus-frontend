@@ -2,30 +2,70 @@ export const data = {
   boardingPoints: [
     {
       stopId: 1,
-      directions: "Kondapur",
-      name: "Opposite Harsha toyota showroom",
+      name: "Kondapur",
+      directions: "Opposite Harsha toyota showroom",
     },
     {
       stopId: 2,
-      directions: "Kukatpally",
-      name: "Near Hyderabad house , beside vegetable yard.",
+      name: "Kukatpally",
+      directions: "Near Hyderabad house , beside vegetable yard.",
     },
     {
       stopId: 3,
-      directions: "Charminar",
-      name: "Opposite hyderabad central mall",
+      name: "Charminar",
+      directions: "Opposite hyderabad central mall",
+    },
+    {
+      stopId: 4,
+      name: "Charminar",
+      directions: "Opposite hyderabad central mall",
+    },
+    {
+      stopId: 5,
+      name: "Charminar",
+      directions: "Opposite hyderabad central mall",
+    },
+    {
+      stopId: 6,
+      name: "Charminar",
+      directions: "Opposite hyderabad central mall",
+    },
+    {
+      stopId: 7,
+      name: "Charminar",
+      directions: "Opposite hyderabad central mall",
     },
   ],
   droppingPoints: [
     {
-      stopId: 4,
-      directions: "Chickballapur",
-      name: "Chickballapur bypass",
+      stopId: 8,
+      name: "Chickballapur",
+      directions: "Chickballapur bypass",
     },
     {
-      stopId: 5,
-      directions: "Devanahalli Airport",
-      name: "Devanahalli airport bypass road",
+      stopId: 9,
+      name: "Devanahalli Airport",
+      directions: "Devanahalli airport bypass road",
+    },
+    {
+      stopId: 10,
+      name: "Devanahalli Airport",
+      directions: "Devanahalli airport bypass road",
+    },
+    {
+      stopId: 11,
+      name: "Devanahalli Airport",
+      directions: "Devanahalli airport bypass road",
+    },
+    {
+      stopId: 12,
+      name: "Devanahalli Airport",
+      directions: "Devanahalli airport bypass road",
+    },
+    {
+      stopId: 13,
+      name: "Devanahalli Airport",
+      directions: "Devanahalli airport bypass road",
     },
   ],
   tours: [
@@ -38,6 +78,9 @@ export const data = {
         { icon: "wifi", label: "Wi-Fi" },
         { icon: "power", label: "Power Outlet" },
         { icon: "tv", label: "TV" },
+        { icon: "sanitizer", label: "Hand Sanitizer" },
+        { icon: "location_on", label: "GPS Tracking" },
+        {icon:"medical_services", label:"First Aid Box"}
       ],
       startTime: 24555255, // epoch time
       endTime: 55455554, // epoch time
@@ -54,14 +97,50 @@ export const data = {
           stopId: 2,
           arrivalTime: 1715853600,
         },
-      ],
-      destinationStops: [
+        {
+          stopId: 3,
+          arrivalTime: 1715853600,
+        },
         {
           stopId: 4,
-          arrivalTime: 1715868000,
+          arrivalTime: 1715853600,
         },
         {
           stopId: 5,
+          arrivalTime: 1715853600,
+        },
+        {
+          stopId: 6,
+          arrivalTime: 1715853600,
+        },
+        {
+          stopId: 7,
+          arrivalTime: 1715853600,
+        },
+      ],
+      destinationStops: [
+        {
+          stopId: 8,
+          arrivalTime: 1715868000,
+        },
+        {
+          stopId: 9,
+          arrivalTime: 1715887200,
+        },
+        {
+          stopId: 10,
+          arrivalTime: 1715887200,
+        },
+        {
+          stopId: 11,
+          arrivalTime: 1715887200,
+        },
+        {
+          stopId: 12,
+          arrivalTime: 1715887200,
+        },
+        {
+          stopId: 13,
           arrivalTime: 1715887200,
         },
       ],
@@ -94,11 +173,11 @@ export const data = {
       ],
       destinationStops: [
         {
-          stopId: 4,
+          stopId: 10,
           arrivalTime: 1715868000,
         },
         {
-          stopId: 5,
+          stopId: 9,
           arrivalTime: 1715887200,
         },
       ],
@@ -131,11 +210,11 @@ export const data = {
       ],
       destinationStops: [
         {
-          stopId: 4,
+          stopId: 9,
           arrivalTime: 1715868000,
         },
         {
-          stopId: 5,
+          stopId: 13,
           arrivalTime: 1715887200,
         },
       ],

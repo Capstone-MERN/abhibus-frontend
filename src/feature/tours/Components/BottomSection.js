@@ -24,6 +24,8 @@ const BottomSection = ({ availableSeats, tourId }) => {
 
     return () => dispatch(removeSeletedTour({ tourId }));
   }, []);
+
+  
   if (apiStatus === "init" || apiStatus === "pending" || !layout)
     return <h1>Loading...</h1>;
 

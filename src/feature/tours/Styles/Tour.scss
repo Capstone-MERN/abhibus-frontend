@@ -15,7 +15,7 @@ body {
 
 .tours_container {
   width: 75vw;
-  @media (max-width:1250px) {
+  @media (max-width: 1250px) {
     width: 80vw;
   }
   @media (max-width: 950px) {
@@ -56,7 +56,7 @@ body {
     gap: 10px;
     border-bottom: 1px solid #f2f2f2;
 
-    >div>b {
+    > div > b {
       font-size: 1.2rem;
     }
 
@@ -90,24 +90,6 @@ body {
           color: #d1d1d1;
         }
       }
-    }
-  }
-
-  .dropdowns {
-    padding: 5px;
-    display: flex;
-    gap: 5px;
-
-    a {
-      display: flex;
-      font-size: 0.8rem;
-      border-right: 1px solid #f2f2f2;
-      padding: 0;
-    }
-
-    a:hover {
-      color: #ce6683 !important;
-      cursor: pointer;
     }
   }
 }
