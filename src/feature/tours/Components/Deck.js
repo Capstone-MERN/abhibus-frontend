@@ -52,18 +52,6 @@ const Deck = ({ deckName, layout, onSelectSeat, selectedPrice }) => {
   );
 };
 
-// Deck.propTypes = {
-//   deckName: PropTypes.string.isRequired,
-//   tourId: PropTypes.string.isRequired,
-//   layout: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       row: PropTypes.number.isRequired,
-//       seatNumber: PropTypes.string.isRequired,
-//       seatType: PropTypes.string,
-//       gender: PropTypes.string,
-//       price: PropTypes.number,
-//     })
-//   ).isRequired,
-// };
+
 
 export default Deck;

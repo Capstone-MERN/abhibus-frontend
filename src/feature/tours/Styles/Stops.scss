@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
 
-    >div:first-child {
+    > div:first-child {
       padding: 10px;
       border-bottom: 1px solid #f2f2f2;
 
@@ -68,23 +68,11 @@
           .point-name {
             font-size: 1rem;
             font-weight: lighter;
+            // white-space: nowrap;
           }
 
           label {
             cursor: pointer;
-          }
-
-          input {
-            display: none;
-          }
-
-          svg {
-            width: 1rem;
-            stroke: #bababa;
-          }
-
-          svg:hover {
-            stroke: $brand !important;
           }
         }
 

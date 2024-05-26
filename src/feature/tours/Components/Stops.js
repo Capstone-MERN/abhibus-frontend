@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import PropTypes from "prop-types";
 import Points from "./Points";
 import SelectedPointCard from "./SelectedPointCard";
 import "../Styles/Stops.scss";
@@ -43,10 +42,5 @@ const Stops = ({ pointName, points, selectedStop, handleChange }) => {
     />
   );
 };
-
-// Stops.propTypes = {
-//   pointName: PropTypes.string.isRequired,
-//   tourId: PropTypes.string.isRequired,
-// };
 
 export default Stops;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { SquareIcon } from "./constantfuncs";
 import "../Styles/SeatIndicators.scss";
 
@@ -40,9 +39,5 @@ const SeatIndicators = ({ availableSeats }) => {
     </div>
   );
 };
-
-// SeatIndicators.propTypes = {
-//   availableSeats: PropTypes.number.isRequired,
-// };
 
 export default SeatIndicators;

@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-// import { TourIdProvider } from "./Components/Context/TourContext";
 import Tour from "./Components/Tour";
 import { useSelector } from "react-redux";
 
@@ -17,14 +16,13 @@ const Tours = () => {
   return (
     <div className="tours_container">
       {tours.map((tour) => (
-        // <TourIdProvider key={tour.tourId} tourId={tour.tourId}>
-          <Tour
-            key={tour.tourId}
-            tour={tour}
-            sourceCity={sourceCity}
-            destinationCity={destCity}
-          />
-        // </TourIdProvider>
+        <Tour
+          key={tour.tourId}
+          tour={tour}
+          tourId={tour.tourId}
+          sourceCity={sourceCity}
+          destinationCity={destCity}
+        />
       ))}
     </div>
   );

@@ -1,64 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-<<<<<<< HEAD
 import { data, layoutData } from "../dummyData";
-=======
-import { BoardingStops, DroppingStops, data, layoutData } from "../dummyData";
->>>>>>> d2ec69785dd04bf350a9d1a13a2232452aed95c9
 
 const toursSlice = createSlice({
   name: "tours",
   initialState: {
-<<<<<<< HEAD
-=======
-    // Boarding: {
-    //   /*
-    //     45678:{
-    //       stopId:6454,
-    //       name:"bhopal Chouraha"
-    //     }
-    //   */
-    // },
-    // Dropping: {
-    //   /*
-    //     45678:{
-    //       stopId:6454,
-    //       name:"bhopal Chouraha"
-    //     }
-    //   */
-    // },
-    // BoardingStops,
-    // /*
-    //     BoardingStops:{
-    //       tourId:[{}]
-    //       tourId:[{}]
-    //     }
-    //   */
-    // DroppingStops,
-    // /*
-    //     DroppingStops:{
-    //       tourId:[{}]
-    //       tourId:[{}]
-    //     }
-    //   */
-    // selectedSeats: {
-    //   /*
-    //     tourId:[{
-    //       seatNumber:"L1",
-    //       price:8000
-    //     }]
-    //     tourId:[{
-    //       seatNumber:"L1",
-    //       price:8000
-    //     }]
-
-    //   */
-    // },
-    // priceFilter: {
-    //   /*
-    //     tourId: 'all' || '800' || '1500'
-    //   */
-    // },
->>>>>>> d2ec69785dd04bf350a9d1a13a2232452aed95c9
     tours: {
       data: data,
       // TODO: make it dynamic during api integration
@@ -69,63 +14,27 @@ const toursSlice = createSlice({
         apiStatus: "success",
         data: layoutData,
       },
-<<<<<<< HEAD
-      54852: {
+      54546: {
         apiStatus: "success",
         data: layoutData,
       },
-      54853: {
+      97986: {
         apiStatus: "success",
         data: layoutData,
       },
     },
-    selectedTour: {
-      // 54851: {
-      //   seats: [
-      //     // { seatId: "L4", price: 1000 },
-      //     // { seatId: "L5", price: 200 },
-      //   ],
-      //   boardingPoint: {
-      //     // name: "",
-      //     // description: "",
-      //     // stopId: 2930,
-      //   },
-      //   droppingPoint: {
-      //     // name: "",
-      //     // description: "",
-      //     // stopId: 2930,
-      //   },
-      // },
-=======
-    },
-    selectedTour: {
-      seats: [
-        { seatId: "L4", price: 1000 },
-        { seatId: "L5", price: 200 },
-      ],
-      boardingPoint: {
-        name: "",
-        description: "",
-        stopId: 2930,
-      },
-      droppingPoint: {
-        name: "",
-        description: "",
-        stopId: 2930,
-      },
->>>>>>> d2ec69785dd04bf350a9d1a13a2232452aed95c9
-    },
+    selectedTour: {},
   },
   reducers: {
     toggleBoardingPoint: (state, action) => {
-      if (state.selectedTour[action.payload.tourId].boardingPoint?.stopId) {
+      if (state.selectedTour[action.payload.tourId]?.boardingPoint?.stopId) {
         state.selectedTour[action.payload.tourId].boardingPoint = {};
       }
       state.selectedTour[action.payload.tourId].boardingPoint =
         action.payload.stop;
     },
     toggleDroppingPoint: (state, action) => {
-      if (state.selectedTour[action.payload.tourId].droppingPoint?.stopId) {
+      if (state.selectedTour[action.payload.tourId]?.droppingPoint?.stopId) {
         state.selectedTour[action.payload.tourId].droppingPoint = {};
       }
       state.selectedTour[action.payload.tourId].droppingPoint =

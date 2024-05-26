@@ -54,15 +54,11 @@ const BottomSection = ({ availableSeats, tourId }) => {
           tourId={tourId}
           selectedPrice={selectedPrice}
         />
-        <StopSelection tourId={tourId} />
+        <StopSelection key={tourId} tourId={tourId} />
       </div>
     </div>
   );
 };
 
-// SeatLayout.propTypes = {
-//   availableSeats: PropTypes.number.isRequired,
-//   tourId: PropTypes.string.isRequired,
-// };
 
 export default BottomSection;

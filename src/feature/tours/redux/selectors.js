@@ -9,11 +9,6 @@ export const useDropping = (tourId) =>
 export const useSelectedSeats = (tourId) =>
   useSelector((state) => state.tours.selectedTour[tourId]?.seats || []);
 
-export const usePriceFilter = (tourId) =>
-  useSelector(
-    (state) => state.tours.selectedTour[tourId]?.priceFilter || "all"
-  );
-
 export const stopPointsSelector = (state, tourId) => {
   let sourceStops, destinationStops;
   state.tours.tours?.data?.tours.forEach((tour) => {

@@ -15,7 +15,6 @@
     align-items: center;
     gap: 40px;
 
-    // padding:  20px 0;
     svg {
       rotate: 270deg;
     }
@@ -34,7 +33,6 @@
       display: flex;
       justify-content: space-between;
 
-      // gap: 10px;
       .seat {
         margin: 5px;
         border: none;
@@ -50,9 +48,24 @@
           font-size: 0.6rem;
           color: black;
         }
+
+        .tooltip {
+          color: 'red' !important;
+          display: flex !important;
+        }
+
+        .ant-tooltip .custom-tooltip {
+          color: red;
+
+          .material-icons {
+            font-size: 0.9rem;
+          }
+        }
+
+
       }
 
-     
+
 
       .empty-space {
         height: 1.4rem;
@@ -71,8 +84,5 @@
       }
     }
 
-    // .row:nth-child(2) {
-    //   margin-bottom: 20px;
-    // }
   }
 }

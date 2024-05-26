@@ -14,7 +14,10 @@ body {
 }
 
 .tours_container {
-  width: 1000px;
+  width: 75vw;
+  @media (max-width:1250px) {
+    width: 80vw;
+  }
   @media (max-width: 950px) {
     width: 100vw;
   }
@@ -22,7 +25,6 @@ body {
 
 .tour_container {
   margin: 50px;
-  // min-width: 800px;
   background-color: #ffffff;
   transition: box-shadow 0.1s ease;
   border-radius: 10px;

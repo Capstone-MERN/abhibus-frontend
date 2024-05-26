@@ -4,8 +4,6 @@ import BoardingsAndDroppings from "./BoardingsAndDroppings";
 import "../Styles/Tour.scss";
 import { CircleIcon, formatDate, formatTime } from "./constantfuncs";
 import BottomSection from "./BottomSection";
-import { useDispatch } from "react-redux";
-import { removeSeletedTour, setSelectedTour } from "../redux/slice";
 
 const Tour = ({ tour, sourceCity, destinationCity }) => {
   const [showLayout, setShowLayout] = useState(false);
@@ -57,7 +55,9 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
             </h5>
           </div>
           <div className="seat_card">
-            <button onClick={toggleLayout}>Show Seats</button>
+            <button onClick={toggleLayout}>
+              {showLayout ? "Hide Seats" : "Show Seats"}
+            </button>
             <p className="light_color">{tour.availableSeats} Seats Available</p>
           </div>
         </div>
@@ -73,20 +73,5 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
     </div>
   );
 };
-
-// Tour.propTypes = {
-//   tour: PropTypes.shape({
-//     busPartner: PropTypes.string.isRequired,
-//     busType: PropTypes.string.isRequired,
-//     startTime: PropTypes.string.isRequired,
-//     endTime: PropTypes.string.isRequired,
-//     duration: PropTypes.string.isRequired,
-//     minPrice: PropTypes.number.isRequired,
-//     availableSeats: PropTypes.number.isRequired,
-//     tourId: PropTypes.string.isRequired,
-//   }).isRequired,
-//   sourceCity: PropTypes.string.isRequired,
-//   destinationCity: PropTypes.string.isRequired,
-// };
 
 export default Tour;

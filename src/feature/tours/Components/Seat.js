@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { SeatIcon } from "./constantfuncs";
+import { Tooltip } from "antd";
+import MyToolTip from "./MyTooltip";
 
 const Seat = ({ seat, onSelectSeat, selectedPrice }) => {
   const [selected, setSelected] = useState(false);
@@ -22,27 +24,29 @@ const Seat = ({ seat, onSelectSeat, selectedPrice }) => {
   };
 
   return (
-    <button className="seat" onClick={handleSelect} disabled={!!seat.gender}>
-      <SeatIcon
-        seatType={seat.seatType}
-        fill={setFillColor()}
-        stroke={setStrokeColor()}
-        filter={selectedPrice === seat.price}
-        selected={selected}
-        gender={seat.gender}
-      />
-      <span className="seat_number">{seat.seatNumber}</span>
-    </button>
+    <Tooltip
+      title={<MyToolTip seat={seat}/>}
+      color="#ffffff"
+      overlayClassName="custom-tooltip"
+      overlayInnerStyle={{
+        color: "black",
+        display: "flex",
+      }}
+    >
+      <button className="seat" onClick={handleSelect} disabled={!!seat.gender}>
+        <SeatIcon
+          seatType={seat.seatType}
+          fill={setFillColor()}
+          stroke={setStrokeColor()}
+          filter={selectedPrice === seat.price}
+          selected={selected}
+          gender={seat.gender}
+        />
+        <span className="seat_number">{seat.seatNumber}</span>
+      </button>
+    </Tooltip>
   );
 };
 
-// Seat.propTypes = {
-//   seat: PropTypes.shape({
-//     seatNumber: PropTypes.number.isRequired,
-//     seatType: PropTypes.string.isRequired,
-//     gender: PropTypes.string,
-//   }).isRequired,
-//   tourId: PropTypes.string.isRequired,
-// };
 
 export default Seat;

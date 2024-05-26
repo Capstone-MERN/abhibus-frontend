@@ -1,6 +1,3 @@
-import React, { useMemo } from "react";
-import PropTypes from "prop-types";
-
 const SelectedSeatCard = ({ boarding, dropping, selectedSeats }) => {
   const isPointsSelected =
     boarding?.stopId && dropping?.stopId && selectedSeats?.length > 0;
@@ -35,9 +32,5 @@ const SelectedSeatCard = ({ boarding, dropping, selectedSeats }) => {
     </>
   );
 };
-
-// SelectedSeatCard.propTypes = {
-//   tourId: PropTypes.string.isRequired,
-// };
 
 export default SelectedSeatCard;
