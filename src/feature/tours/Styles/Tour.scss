@@ -27,14 +27,10 @@ body {
   background-color: #ffffff;
   transition: box-shadow 0.1s ease;
   border-radius: 10px;
-
+  cursor: pointer;
   .layout {
     padding: 8px;
   }
-}
-
-.tour_container:hover {
-  box-shadow: 0 0 10px 5px lightgray;
 }
 
 .tour_card {

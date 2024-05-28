@@ -9,5 +9,8 @@
   .tours_container {
     height: 100%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
