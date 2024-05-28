@@ -1,57 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BoardingStops, DroppingStops, data, layoutData } from "../dummyData";
+import { data, layoutData } from "../dummyData";
 
 const toursSlice = createSlice({
   name: "tours",
   initialState: {
-    // Boarding: {
-    //   /*
-    //     45678:{
-    //       stopId:6454,
-    //       name:"bhopal Chouraha"
-    //     }
-    //   */
-    // },
-    // Dropping: {
-    //   /*
-    //     45678:{
-    //       stopId:6454,
-    //       name:"bhopal Chouraha"
-    //     }
-    //   */
-    // },
-    // BoardingStops,
-    // /*
-    //     BoardingStops:{
-    //       tourId:[{}]
-    //       tourId:[{}]
-    //     }
-    //   */
-    // DroppingStops,
-    // /*
-    //     DroppingStops:{
-    //       tourId:[{}]
-    //       tourId:[{}]
-    //     }
-    //   */
-    // selectedSeats: {
-    //   /*
-    //     tourId:[{
-    //       seatNumber:"L1",
-    //       price:8000
-    //     }]
-    //     tourId:[{
-    //       seatNumber:"L1",
-    //       price:8000
-    //     }]
-
-    //   */
-    // },
-    // priceFilter: {
-    //   /*
-    //     tourId: 'all' || '800' || '1500'
-    //   */
-    // },
     tours: {
       data: data,
       // TODO: make it dynamic during api integration
@@ -62,64 +14,65 @@ const toursSlice = createSlice({
         apiStatus: "success",
         data: layoutData,
       },
-    },
-    selectedTour: {
-      seats: [
-        { seatId: "L4", price: 1000 },
-        { seatId: "L5", price: 200 },
-      ],
-      boardingPoint: {
-        name: "",
-        description: "",
-        stopId: 2930,
+      54546: {
+        apiStatus: "success",
+        data: layoutData,
       },
-      droppingPoint: {
-        name: "",
-        description: "",
-        stopId: 2930,
+      97986: {
+        apiStatus: "success",
+        data: layoutData,
       },
     },
+    selectedTour: {},
   },
   reducers: {
-    setBoarding: (state, action) => {
-      state.Boarding[action.payload.tourId] = action.payload.stop || {};
-    },
-    removeBoarding: (state, action) => {
-      delete state.Boarding[action.payload.tourId];
-    },
-    setDropping: (state, action) => {
-      state.Dropping[action.payload.tourId] = action.payload.stop || {};
-    },
-    removeDropping: (state, action) => {
-      delete state.Dropping[action.payload.tourId];
-    },
-    addSelectedSeat: (state, action) => {
-      if (!state.selectedSeats[action.payload.tourId]) {
-        state.selectedSeats[action.payload.tourId] = [];
+    toggleBoardingPoint: (state, action) => {
+      if (state.selectedTour[action.payload.tourId]?.boardingPoint?.stopId) {
+        state.selectedTour[action.payload.tourId].boardingPoint = {};
       }
-      state.selectedSeats[action.payload.tourId].push(
-        action.payload.seatDetails
+      state.selectedTour[action.payload.tourId].boardingPoint =
+        action.payload.stop;
+    },
+    toggleDroppingPoint: (state, action) => {
+      if (state.selectedTour[action.payload.tourId]?.droppingPoint?.stopId) {
+        state.selectedTour[action.payload.tourId].droppingPoint = {};
+      }
+      state.selectedTour[action.payload.tourId].droppingPoint =
+        action.payload.stop;
+    },
+
+    toggleSeatSelection: (state, action) => {
+      const seat = action.payload.seat;
+
+      const index = state.selectedTour[action.payload.tourId].seats.findIndex(
+        (s) => s.seatNumber === seat.seatNumber
       );
+      if (index !== -1) {
+        state.selectedTour[action.payload.tourId].seats.splice(index, 1);
+      } else {
+        state.selectedTour[action.payload.tourId].seats.push(seat);
+      }
     },
-    removeSelectedSeat: (state, action) => {
-      state.selectedSeats[action.payload.tourId] = state.selectedSeats[
-        action.payload.tourId
-      ].filter((seat) => seat.seatNumber !== action.payload.seatNumber);
+
+    setSelectedTour: (state, action) => {
+      state.selectedTour[action.payload.tourId] = {
+        seats: [],
+        boardingPoint: {},
+        droppingPoint: {},
+      };
     },
-    setPriceFilter: (state, action) => {
-      state.priceFilter[action.payload.tourId] = action.payload.price;
+    removeSeletedTour: (state, action) => {
+      delete state.selectedTour[action.payload.tourId];
     },
   },
 });
 
 export const {
-  setBoarding,
-  removeBoarding,
-  setDropping,
-  removeDropping,
-  addSelectedSeat,
-  removeSelectedSeat,
-  setPriceFilter,
+  toggleBoardingPoint,
+  toggleDroppingPoint,
+  toggleSeatSelection,
+  setSelectedTour,
+  removeSeletedTour,
 } = toursSlice.actions;
 
 export default toursSlice;

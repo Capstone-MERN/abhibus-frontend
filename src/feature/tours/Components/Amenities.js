@@ -1,48 +1,65 @@
 import { Dropdown, Space } from "antd";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import "../Styles/amenities.scss";
 
-const Amenities = () => {
-  const [amenitiesArrow, setAmenitiesArrow] = useState(false);
-  const handleAmenitiesClick = (e) => {
-    e.preventDefault();
-    setAmenitiesArrow(!amenitiesArrow);
+const getAmenities = (amenities) => {
+  return (
+    <div className="amenities-container">
+      <div>
+        <h4>Amenities</h4>
+      </div>
+      <div className="amenities-list">
+        {amenities.map((amenity) => (
+          <div key={amenity.icon}>
+            <span className="material-icons">{amenity.icon}</span>
+            <p>{amenity.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+const Amenities = ({ amenities }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
   };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside); // Clean up on unmount
+    };
+  }, [isOpen]);
   const Amenities = [
     {
-      label: "Amenities",
+      label: getAmenities(amenities),
       key: "0",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: "2nd menu item",
-      key: "1",
-    },
-    {
-      label: "3rd menu item",
-      key: "3",
     },
   ];
   return (
-    <div>
-      <Dropdown
-        menu={{
-          items: Amenities,
-        }}
-        trigger={["click"]}
+    <Dropdown
+      menu={{
+        items: Amenities,
+      }}
+      trigger={["click"]}
+    >
+      <a
+        style={{ color: isOpen ? "#ce6683" : "#8a99a5" }}
+        onClick={() => setIsOpen(!isOpen)}
+        ref={dropdownRef}
       >
-        <a
-          style={{ color: amenitiesArrow ? "#ce6683" : "#8a99a5" }}
-          onClick={handleAmenitiesClick}
-        >
-          <Space>Amenities</Space>
-          <span className="material-icons">
-            {amenitiesArrow ? "keyboard_arrow_up" : "keyboard_arrow_down"}
-          </span>
-        </a>
-      </Dropdown>
-    </div>
+        <Space>Amenities</Space>
+        <span className="material-icons">
+          {isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"}
+        </span>
+      </a>
+    </Dropdown>
   );
 };
 

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import Amenities from "./Amenities";
 import BoardingsAndDroppings from "./BoardingsAndDroppings";
-import BottomSection from "./SeatLayout/BottomSection";
 import "../Styles/Tour.scss";
 import { CircleIcon, formatDate, formatTime } from "./constantfuncs";
+import BottomSection from "./BottomSection";
+import { useSelector } from "react-redux";
+import { stopPointsSelector } from "../redux/selectors";
 
 const Tour = ({ tour, sourceCity, destinationCity }) => {
   const [showLayout, setShowLayout] = useState(false);
 
+  const { boardingPoints, droppingPoints } = useSelector((state) =>
+    stopPointsSelector(state, tour.tourId)
+  );
   const toggleLayout = () => {
     setShowLayout(!showLayout);
   };
@@ -42,8 +47,11 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
             </div>
           </div>
           <div className="dropdowns">
-            <BoardingsAndDroppings />
-            <Amenities />
+            <BoardingsAndDroppings
+              boardingPoints={boardingPoints}
+              droppingPoints={droppingPoints}
+            />
+            <Amenities amenities={tour.amenities} />
           </div>
         </div>
         <div className="right_col">
@@ -55,18 +63,20 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
             </h5>
           </div>
           <div className="seat_card">
-            <button onClick={toggleLayout}>Show Seats</button>
+            <button onClick={toggleLayout}>
+              {showLayout ? "Hide Seats" : "Show Seats"}
+            </button>
             <p className="light_color">{tour.availableSeats} Seats Available</p>
           </div>
         </div>
       </div>
       {showLayout && (
-        <BottomSection
-          tourId={tour.tourId}
-          availableSeats={tour.availableSeats}
-          sourceStops={tour.sourceStops}
-          destinationStops={tour.destinationStops}
-        />
+        <div className="layout">
+          <BottomSection
+            availableSeats={tour.availableSeats}
+            tourId={tour.tourId}
+          />
+        </div>
       )}
     </div>
   );
