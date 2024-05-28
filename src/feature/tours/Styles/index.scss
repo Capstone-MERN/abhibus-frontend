@@ -1,0 +1,13 @@
+.root-tours-container {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  gap: 20px;
+  padding: 20px 10px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  .tours_container {
+    height: 100%;
+    overflow-y: scroll;
+  }
+}

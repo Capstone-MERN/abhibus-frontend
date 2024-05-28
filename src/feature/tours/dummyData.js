@@ -2,30 +2,105 @@ export const data = {
   boardingPoints: [
     {
       stopId: 1,
-      directions: "Kondapur",
-      name: "Opposite Harsha toyota showroom",
+      directions: "Near Charminar",
+      name: "Charminar Bus Stop",
     },
     {
       stopId: 2,
-      directions: "Kukatpally",
-      name: "Near Hyderabad house , beside vegetable yard.",
+      directions: "Secunderabad Railway Station",
+      name: "Secunderabad Bus Stop",
     },
     {
       stopId: 3,
-      directions: "Charminar",
-      name: "Opposite hyderabad central mall",
+      directions: "Rajiv Gandhi International Airport",
+      name: "Airport Bus Stop",
+    },
+    {
+      stopId: 4,
+      directions: "Hitech City",
+      name: "Hitech City Bus Stop",
+    },
+    {
+      stopId: 5,
+      directions: "Ameerpet",
+      name: "Ameerpet Bus Stop",
+    },
+    {
+      stopId: 6,
+      directions: "Begumpet",
+      name: "Begumpet Bus Stop",
+    },
+    {
+      stopId: 7,
+      directions: "Jubilee Hills",
+      name: "Jubilee Hills Bus Stop",
+    },
+    {
+      stopId: 8,
+      directions: "Banjara Hills",
+      name: "Banjara Hills Bus Stop",
+    },
+    {
+      stopId: 9,
+      directions: "Lakdi ka Pul",
+      name: "Lakdi ka Pul Bus Stop",
+    },
+    {
+      stopId: 10,
+      directions: "Tank Bund Road",
+      name: "Tank Bund Bus Stop",
     },
   ],
   droppingPoints: [
     {
-      stopId: 4,
-      directions: "Chickballapur",
-      name: "Chickballapur bypass",
+      stopId: 11,
+      directions: "Majestic Bus Stand",
+      name: "Majestic Bus Stop",
     },
     {
-      stopId: 5,
-      directions: "Devanahalli Airport",
-      name: "Devanahalli airport bypass road",
+      stopId: 12,
+      directions: "Koramangala",
+      name: "Koramangala Bus Stop",
+    },
+    {
+      stopId: 13,
+      directions: "Indiranagar",
+      name: "Indiranagar Bus Stop",
+    },
+    {
+      stopId: 14,
+      directions: "Marathahalli",
+      name: "Marathahalli Bus Stop",
+    },
+    {
+      stopId: 15,
+      directions: "Whitefield",
+      name: "Whitefield Bus Stop",
+    },
+    {
+      stopId: 16,
+      directions: "Electronic City",
+      name: "Electronic City Bus Stop",
+    },
+    {
+      stopId: 17,
+      directions: "Bangalore City Railway Station",
+      name: "Railway Station Bus Stop",
+    },
+    {
+      stopId: 18,
+      directions: "Kempegowda International Airport",
+      name: "Airport Bus Stop",
+    },
+    {
+      stopId: 19,
+      directions: "Jayanagar",
+      name: "Jayanagar Bus Stop",
+    },
+    {
+      stopId: 20,
+      directions: "Hebbal",
+      name: "Hebbal Bus Stop",
     },
   ],
   tours: [
