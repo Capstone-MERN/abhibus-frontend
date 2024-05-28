@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+import "./Styles/index.scss";
+import { Filters } from "../filters";
 import Tour from "./Components/Tour";
 import { useSelector } from "react-redux";
 
@@ -14,16 +16,18 @@ const Tours = () => {
     return <h1>Loading..</h1>;
   }
   return (
-    <div className="tours_container">
-      {tours.map((tour) => (
-        <Tour
-          key={tour.tourId}
-          tour={tour}
-          tourId={tour.tourId}
-          sourceCity={sourceCity}
-          destinationCity={destCity}
-        />
-      ))}
+    <div className="root-tours-container">
+      <Filters />
+      <div className="tours_container">
+        {tours.map((tour) => (
+          <Tour
+            key={tour.tourId}
+            tour={tour}
+            sourceCity={sourceCity}
+            destinationCity={destCity}
+          />
+        ))}
+      </div>
     </div>
   );
 };

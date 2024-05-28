@@ -2,70 +2,105 @@ export const data = {
   boardingPoints: [
     {
       stopId: 1,
-      name: "Kondapur",
-      directions: "Opposite Harsha toyota showroom",
+      directions: "Near Charminar",
+      name: "Charminar Bus Stop",
     },
     {
       stopId: 2,
-      name: "Kukatpally",
-      directions: "Near Hyderabad house , beside vegetable yard.",
+      directions: "Secunderabad Railway Station",
+      name: "Secunderabad Bus Stop",
     },
     {
       stopId: 3,
-      name: "Charminar",
-      directions: "Opposite hyderabad central mall",
+      directions: "Rajiv Gandhi International Airport",
+      name: "Airport Bus Stop",
     },
     {
       stopId: 4,
-      name: "Charminar",
-      directions: "Opposite hyderabad central mall",
+      directions: "Hitech City",
+      name: "Hitech City Bus Stop",
     },
     {
       stopId: 5,
-      name: "Charminar",
-      directions: "Opposite hyderabad central mall",
+      directions: "Ameerpet",
+      name: "Ameerpet Bus Stop",
     },
     {
       stopId: 6,
-      name: "Charminar",
-      directions: "Opposite hyderabad central mall",
+      directions: "Begumpet",
+      name: "Begumpet Bus Stop",
     },
     {
       stopId: 7,
-      name: "Charminar",
-      directions: "Opposite hyderabad central mall",
+      directions: "Jubilee Hills",
+      name: "Jubilee Hills Bus Stop",
+    },
+    {
+      stopId: 8,
+      directions: "Banjara Hills",
+      name: "Banjara Hills Bus Stop",
+    },
+    {
+      stopId: 9,
+      directions: "Lakdi ka Pul",
+      name: "Lakdi ka Pul Bus Stop",
+    },
+    {
+      stopId: 10,
+      directions: "Tank Bund Road",
+      name: "Tank Bund Bus Stop",
     },
   ],
   droppingPoints: [
     {
-      stopId: 8,
-      name: "Chickballapur",
-      directions: "Chickballapur bypass",
-    },
-    {
-      stopId: 9,
-      name: "Devanahalli Airport",
-      directions: "Devanahalli airport bypass road",
-    },
-    {
-      stopId: 10,
-      name: "Devanahalli Airport",
-      directions: "Devanahalli airport bypass road",
-    },
-    {
       stopId: 11,
-      name: "Devanahalli Airport",
-      directions: "Devanahalli airport bypass road",
+      directions: "Majestic Bus Stand",
+      name: "Majestic Bus Stop",
     },
     {
       stopId: 12,
-      name: "Devanahalli Airport",
-      directions: "Devanahalli airport bypass road",
+      directions: "Koramangala",
+      name: "Koramangala Bus Stop",
     },
     {
       stopId: 13,
-      name: "Devanahalli Airport",
-      directions: "Devanahalli airport bypass road",
+      directions: "Indiranagar",
+      name: "Indiranagar Bus Stop",
+    },
+    {
+      stopId: 14,
+      directions: "Marathahalli",
+      name: "Marathahalli Bus Stop",
+    },
+    {
+      stopId: 15,
+      directions: "Whitefield",
+      name: "Whitefield Bus Stop",
+    },
+    {
+      stopId: 16,
+      directions: "Electronic City",
+      name: "Electronic City Bus Stop",
+    },
+    {
+      stopId: 17,
+      directions: "Bangalore City Railway Station",
+      name: "Railway Station Bus Stop",
+    },
+    {
+      stopId: 18,
+      directions: "Kempegowda International Airport",
+      name: "Airport Bus Stop",
+    },
+    {
+      stopId: 19,
+      directions: "Jayanagar",
+      name: "Jayanagar Bus Stop",
+    },
+    {
+      stopId: 20,
+      directions: "Hebbal",
+      name: "Hebbal Bus Stop",
     },
   ],
   tours: [
@@ -80,7 +115,7 @@ export const data = {
         { icon: "tv", label: "TV" },
         { icon: "sanitizer", label: "Hand Sanitizer" },
         { icon: "location_on", label: "GPS Tracking" },
-        {icon:"medical_services", label:"First Aid Box"}
+        { icon: "medical_services", label: "First Aid Box" },
       ],
       startTime: 24555255, // epoch time
       endTime: 55455554, // epoch time

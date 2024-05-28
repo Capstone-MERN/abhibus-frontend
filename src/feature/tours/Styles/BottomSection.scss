@@ -14,31 +14,18 @@
     gap: 20px;
     width: 100%;
     height: fit-content;
-
-    @media (max-width: 950px) {
-      flex-wrap: wrap;
-
-      .stops {
-        flex-grow: 1;
-      }
-
+    .stops {
+      flex-grow: 1;
     }
-
     .layout {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-width: 520px;
-
     }
-
-
-
     .point-name {
       font-weight: lighter;
       font-size: 1.1rem;
     }
-
     .point-direction {
       color: #868696;
       font-size: 0.7rem;
