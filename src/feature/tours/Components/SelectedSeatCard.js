@@ -1,4 +1,11 @@
-const SelectedSeatCard = ({ boarding, dropping, selectedSeats }) => {
+import { ContinueIcon } from "../../../components/icons2";
+
+const SelectedSeatCard = ({
+  boarding,
+  dropping,
+  selectedSeats,
+  handleContinueClick,
+}) => {
   const isPointsSelected =
     boarding?.stopId && dropping?.stopId && selectedSeats?.length > 0;
 
@@ -26,8 +33,10 @@ const SelectedSeatCard = ({ boarding, dropping, selectedSeats }) => {
       <button
         className={isPointsSelected ? "enabled" : "disabled"}
         disabled={!isPointsSelected}
+        onClick={handleContinueClick}
       >
         Continue
+        {isPointsSelected && <ContinueIcon />}
       </button>
     </>
   );

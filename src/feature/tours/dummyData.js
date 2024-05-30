@@ -2,7 +2,7 @@ export const data = {
   boardingPoints: [
     {
       stopId: 1,
-      name: "Kondapur",
+      name: "Kondapur ",
       directions: "Opposite Harsha toyota showroom",
     },
     {
@@ -72,7 +72,7 @@ export const data = {
     {
       busId: 544322,
       tourId: 54851,
-      busType: "AC", // AC | NON-AC
+      busType: "Ashok Leyland AC Sleeper", // AC | NON-AC
       busPartner: "ABC Travels",
       amenities: [
         { icon: "wifi", label: "Wi-Fi" },

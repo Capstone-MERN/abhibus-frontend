@@ -15,7 +15,7 @@ const months = [
 
 export const formatDate = (epoch) => {
   const date = new Date(epoch);
-  return `${date.getDate()} ${months[date.getMonth()]}`;
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 };
 
 export const formatTime = (epoch) => {

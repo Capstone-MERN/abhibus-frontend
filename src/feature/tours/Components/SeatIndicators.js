@@ -1,6 +1,6 @@
 import React from "react";
-import { SquareIcon } from "./constantfuncs";
 import "../Styles/SeatIndicators.scss";
+import { SquareIcon } from "../../../components/icons2";
 
 const SeatIndicators = ({ availableSeats }) => {
   return (
