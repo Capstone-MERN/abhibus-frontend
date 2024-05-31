@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="" Component={Home} />
-      </Routes>
+      </Routes> 
     </BrowserRouter>
   </Provider>
 );

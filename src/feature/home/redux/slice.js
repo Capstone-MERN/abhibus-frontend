@@ -9,59 +9,59 @@ const initialState = {
             state: "Telangana"
         },
         {
-            id:32922,
-            name:"Banglore",
+            id: 32922,
+            name: "Banglore",
             state: "Karnataka",
         },
         {
-            id:38922,
-            name:"Chennai",
+            id: 38922,
+            name: "Chennai",
             state: "TamilNadu",
         },
         {
-            id:37933,
-            name:"Goa",
-            state: "Goa", 
+            id: 37933,
+            name: "Goa",
+            state: "Goa",
         },
         {
-            id:37955,
-            name:"Vijayawada",
-            state: "Andhra Pradesh", 
+            id: 37955,
+            name: "Vijayawada",
+            state: "Andhra Pradesh",
         },
         {
-            id:38955,
-            name:"Nellore",
-            state: "Andhra Pradesh", 
+            id: 38955,
+            name: "Nellore",
+            state: "Andhra Pradesh",
         },
         {
-            id:38923,
-            name:"Jaipur",
-            state: "Rajasthan", 
+            id: 38923,
+            name: "Jaipur",
+            state: "Rajasthan",
         },
         {
-            id:37923,
-            name:"Manglore",
-            state: "Karnataka", 
+            id: 37923,
+            name: "Manglore",
+            state: "Karnataka",
         },
         {
-            id:39923,
-            name:"Visakhapatnam",
-            state: "Andhra Pradesh", 
+            id: 39923,
+            name: "Visakhapatnam",
+            state: "Andhra Pradesh",
         },
         {
-            id:39823,
-            name:"Delhi",
-            state: "Delhi", 
+            id: 39823,
+            name: "Delhi",
+            state: "Delhi",
         },
         {
-            id:39844,
-            name:"Indore",
-            state: "Maharashtra", 
+            id: 39844,
+            name: "Indore",
+            state: "Maharashtra",
         },
         {
-            id:38854,
-            name:"Kolkata",
-            state: "West Bengal", 
+            id: 38854,
+            name: "Kolkata",
+            state: "West Bengal",
         },
     ],
     selection: {
@@ -75,19 +75,23 @@ export const searchSlice = createSlice({
     name: "search",
     initialState,
     reducers: {
-      updateSourceCity: (state, action) => {
-        state.selection.sourceCity = action.payload;
-      },
-      updateDestCity: (state, action) => { 
-          state.selection.destCity = action.payload;
-    },
-    updateCitiesApiStatus(state, action) {
-        state.apiStatus = action.payload.apiStatus;
-        if (action.payload.apiStatus === ApiStatus.success) {
-            state.cities = action.payload.data;
-        }
+        updateSourceCity: (state, action) => {
+            state.selection.sourceCity = action.payload;
+        },
+        updateDestCity: (state, action) => {
+            debugger;
+            state.selection.destCity = action.payload;
+        },
+        updateSelectedDate(state, action){
+            state.selection.date = action.payload;
+        },
+        updateCitiesApiStatus(state, action) {
+            state.apiStatus = action.payload.apiStatus;
+            if (action.payload.apiStatus === ApiStatus.success) {
+                state.cities = action.payload.data;
+            }
         },
     },
-  });
-  
-  export const { updateSourceCity, updateDestCity, updateCitiesApiStatus } = searchSlice.actions;
+});
+
+export const { updateSourceCity, updateDestCity, updateCitiesApiStatus, updateSelectedDate } = searchSlice.actions;

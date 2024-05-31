@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { updateSourceCity, updateDestCity } from "./redux/slice";
+import { updateSourceCity, updateDestCity, updateSelectedDate } from "./redux/slice";
 import { DatePicker } from "antd";
 import '../../styles/toursearch.scss';
 import dayjs from 'dayjs';
 import CitiesList from './CitiesList';
+import searchbus from '../home/assets/searchbus.webp';
+import { useNavigate } from "react-router-dom";
+
 
 const searchCities = (state, searchValue, excludedCity) => {
   return state.search.cities.filter((city) =>
@@ -16,14 +19,13 @@ const searchCities = (state, searchValue, excludedCity) => {
 const TourSearch = () => {
   const [searchValue, setSearchValue] = useState("");
   const [color, setColor] = useState('#000');
-  const [selectedDate, setSelectedDate] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const sourceCity = useSelector((state) => state.search.selection.sourceCity);
-  const destCity = useSelector((state) => state.search.selection.destCity);
+  const { sourceCity, destCity, date: selectedDate } = useSelector(state => state.search.selection);
 
   const getCities = useSelector((state) => searchCities(
     state,
@@ -58,6 +60,10 @@ const TourSearch = () => {
     dispatch(updateDestCity(sourceCity));
   };
 
+  const setSelectedDate = (date) => {
+    dispatch(updateSelectedDate(date));
+  }
+
   const handleInputChange = (e, inputType) => {
     const value = e.target.value;
     setSearchValue(value);
@@ -91,8 +97,22 @@ const TourSearch = () => {
     setSelectedDate(dayjs().add(1, 'days'));
   };
 
+  const handleSearch = () => {
+    if (sourceCity && destCity && selectedDate) {
+      const formattedDate = selectedDate.format('DD-MM-YYYY');
+      const url = `/bus_search/${sourceCity.name}${destCity.name}${formattedDate}`;
+      navigate(url);
+    } else {
+      alert("Please select source city, destination city, and date.");
+    }
+  };
+
   return (
     <div className="tour-header" onClick={(e) => e.stopPropagation()}>
+      <div className="bus-image">
+      <img src={searchbus} alt="bus-image"/>
+      </div>
+      <div className="main-section">
       <div className="tour-heading">
         <h1>Book Bus Tickets</h1>
       </div>
@@ -147,11 +167,13 @@ const TourSearch = () => {
             value={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             format="DD-MM-YYYY"
+
           />
           <span className="text-color" onClick={handleTodayClick}>Today</span>
           <span className="text-color" onClick={handleTomorrowClick}>Tomorrow</span>
         </div>
-        <button className="search-button">Search</button>
+        <button className="search-button" onClick={handleSearch}>Search</button>
+        </div>
       </div>
     </div>
   );
