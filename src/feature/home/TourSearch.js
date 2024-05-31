@@ -97,7 +97,7 @@ const TourSearch = () => {
     setSelectedDate(dayjs().add(1, 'days'));
   };
 
-  const handleSearch = () => {
+  const handleNavigation = () => {
     if (sourceCity && destCity && selectedDate) {
       const formattedDate = selectedDate.format('DD-MM-YYYY');
       const url = `/bus_search/${sourceCity.name}${destCity.name}${formattedDate}`;
@@ -110,7 +110,7 @@ const TourSearch = () => {
   return (
     <div className="tour-header" onClick={(e) => e.stopPropagation()}>
       <div className="bus-image">
-      <img src={searchbus} alt="bus-image"/>
+      <img src={searchbus} alt="bus"/>
       </div>
       <div className="main-section">
       <div className="tour-heading">
@@ -172,7 +172,7 @@ const TourSearch = () => {
           <span className="text-color" onClick={handleTodayClick}>Today</span>
           <span className="text-color" onClick={handleTomorrowClick}>Tomorrow</span>
         </div>
-        <button className="search-button" onClick={handleSearch}>Search</button>
+        <button className="search-button" onClick={handleNavigation}>Search</button>
         </div>
       </div>
     </div>
