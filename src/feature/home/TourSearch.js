@@ -102,6 +102,11 @@ const TourSearch = () => {
     }
   };
 
+  // Disabling the dates before today
+  const disabledDate = (current) => {
+    return current && current < dayjs().startOf('day');
+  };
+
   useEffect(() => {
     const onDocumentClick = () => setShowSuggestions(false);
     document.addEventListener("click", onDocumentClick);
@@ -110,11 +115,11 @@ const TourSearch = () => {
   }, [dispatch]);
 
   return (
-    <div className="tour-header" onClick={(e) => e.stopPropagation()}>
+    <section className="tour-header" onClick={(e) => e.stopPropagation()}>
       <div className="bus-image">
       <img src={searchbus} alt="bus"/>
       </div>
-      <div className="main-section">
+      <section className="main-section">
       <div className="tour-heading">
         <h1>Book Bus Tickets</h1>
       </div>
@@ -167,6 +172,7 @@ const TourSearch = () => {
           <DatePicker
             className="date-icon"
             value={selectedDate}
+            disabledDate={disabledDate}
             onChange={(date) => setSelectedDate(date)}
             format="DD-MM-YYYY"
 
@@ -176,8 +182,8 @@ const TourSearch = () => {
         </div>
         <button className="search-button" onClick={handleNavigation}>Search</button>
         </div>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 
