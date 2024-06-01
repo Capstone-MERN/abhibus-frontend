@@ -9,7 +9,7 @@ const Home = () => {
   
   useEffect(() => {
     dispatch(fetchCities)
-  }, [])
+  }, [dispatch])
 
   if(apiStatus === "init" || apiStatus === "pending") {
     return <h1>Loading ..</h1>

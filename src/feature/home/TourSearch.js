@@ -7,11 +7,9 @@ import dayjs from 'dayjs';
 import CitiesList from './CitiesList';
 import searchbus from '../home/assets/searchbus.webp';
 import { useNavigate } from "react-router-dom";
-import { fetchCities } from "./redux/thunk";
 
 
 const searchCities = (state, searchValue, excludedCity) => {
-  // debugger
   return state.search.cities.filter((city) =>
     city.city.toLowerCase().includes(searchValue.toLowerCase()) &&
     city.city !== excludedCity
@@ -95,7 +93,9 @@ const TourSearch = () => {
   const handleNavigation = () => {
     if (sourceCity && destCity && selectedDate) {
       const formattedDate = selectedDate.format('DD-MM-YYYY');
-      const url = `/bus_search/${sourceCity.city}/${destCity.city}/${formattedDate}`;
+      const sourceId = sourceCity.cityId;
+      const destId = destCity.cityId; 
+      const url = `/bus_search/${sourceCity.city}/${sourceId}/${destCity.city}/${destId}/${formattedDate}`;
       navigate(url);
     } else {
       alert("Please select source city, destination city, and date.");
@@ -107,7 +107,7 @@ const TourSearch = () => {
     document.addEventListener("click", onDocumentClick);
 
     return () => document.removeEventListener("click", onDocumentClick);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="tour-header" onClick={(e) => e.stopPropagation()}>

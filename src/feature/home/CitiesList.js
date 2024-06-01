@@ -8,7 +8,7 @@ const CitiesList = ({ handleCitySelect, getCities, focusedInput }) => {
     className={`cities ${focusedInput}`}>
       {getCities.map((city) => (
         <div
-        key={city.id}
+        key={city.cityId}
         className="city"
         onClick={() => handleCitySelect(city)}
         >

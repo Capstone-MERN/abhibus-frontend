@@ -1,9 +1,10 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ApiStatus } from "../../../network/constants";
 
 const initialState = {
     cities: [],
     selection: {
+        cityId: null,
         sourceCity: null,
         destCity: null,
         date: null,
@@ -15,11 +16,13 @@ export const searchSlice = createSlice({
     name: "search",
     initialState,
     reducers: {
+        updateCityId: (state, action) => {
+            state.selection.cityId = action.payload;
+        },
         updateSourceCity: (state, action) => {
             state.selection.sourceCity = action.payload;
         },
         updateDestCity: (state, action) => {
-            debugger;
             state.selection.destCity = action.payload;
         },
         updateSelectedDate(state, action){
@@ -34,4 +37,4 @@ export const searchSlice = createSlice({
     },
 });
 
-export const { updateSourceCity, updateDestCity, updateCitiesApiStatus, updateSelectedDate } = searchSlice.actions;
+export const {updateCityId, updateSourceCity, updateDestCity, updateCitiesApiStatus, updateSelectedDate } = searchSlice.actions;
