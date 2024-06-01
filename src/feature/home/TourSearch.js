@@ -7,12 +7,14 @@ import dayjs from 'dayjs';
 import CitiesList from './CitiesList';
 import searchbus from '../home/assets/searchbus.webp';
 import { useNavigate } from "react-router-dom";
+import { fetchCities } from "./redux/thunk";
 
 
 const searchCities = (state, searchValue, excludedCity) => {
+  // debugger
   return state.search.cities.filter((city) =>
-    city.name.toLowerCase().includes(searchValue.toLowerCase()) &&
-    city.name !== excludedCity
+    city.city.toLowerCase().includes(searchValue.toLowerCase()) &&
+    city.city !== excludedCity
   );
 };
 
@@ -30,15 +32,8 @@ const TourSearch = () => {
   const getCities = useSelector((state) => searchCities(
     state,
     searchValue,
-    focusedInput === 'from' ? (destCity ? destCity.name : "") : (sourceCity ? sourceCity.name : "")
+    focusedInput === 'from' ? (destCity ? destCity.city : "") : (sourceCity ? sourceCity.city : "")
   ));
-
-  useEffect(() => {
-    const onDocumentClick = () => setShowSuggestions(false);
-    document.addEventListener("click", onDocumentClick);
-
-    return () => document.removeEventListener("click", onDocumentClick);
-  }, []);
 
   const handleCitySelect = (city) => {
     if (focusedInput === 'from') {
@@ -100,12 +95,19 @@ const TourSearch = () => {
   const handleNavigation = () => {
     if (sourceCity && destCity && selectedDate) {
       const formattedDate = selectedDate.format('DD-MM-YYYY');
-      const url = `/bus_search/${sourceCity.name}/${destCity.name}/${formattedDate}`;
+      const url = `/bus_search/${sourceCity.city}/${destCity.city}/${formattedDate}`;
       navigate(url);
     } else {
       alert("Please select source city, destination city, and date.");
     }
   };
+
+  useEffect(() => {
+    const onDocumentClick = () => setShowSuggestions(false);
+    document.addEventListener("click", onDocumentClick);
+
+    return () => document.removeEventListener("click", onDocumentClick);
+  }, []);
 
   return (
     <div className="tour-header" onClick={(e) => e.stopPropagation()}>
@@ -120,7 +122,7 @@ const TourSearch = () => {
         <div className="location-search">
           <span className="material-icons" style={{ color: color }}>directions_bus</span>
           <input
-            value={sourceCity ? sourceCity.name : (focusedInput === 'from' ? searchValue : "")}
+            value={sourceCity ? sourceCity.city : (focusedInput === 'from' ? searchValue : "")}
             onFocus={() => handleInputClick("from")}
             onChange={(e) => handleInputChange(e, "from")}
             onKeyDown={(e) => handleKeyDown(e, "from")}
@@ -143,7 +145,7 @@ const TourSearch = () => {
         <div className="location-search">
           <span className="material-icons" style={{ color: color }}>location_on</span>
           <input
-            value={destCity ? destCity.name : (focusedInput === 'to' ? searchValue : "")}
+            value={destCity ? destCity.city : (focusedInput === 'to' ? searchValue : "")}
             onFocus={() => handleInputClick("to")}
             onChange={(e) => handleInputChange(e, "to")}
             onKeyDown={(e) => handleKeyDown(e, "to")}

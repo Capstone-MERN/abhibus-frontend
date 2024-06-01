@@ -15,7 +15,7 @@ const CitiesList = ({ handleCitySelect, getCities, focusedInput }) => {
           <div className='cities-selection'>
         <span class="material-icons">fort</span>
         <div className='cities-states'>
-          <span className='text-dark'>{city.name}</span>
+          <span className='text-dark'>{city.city}</span>
           <span className='text-light'>{city.state}</span>
           </div>
           </div>

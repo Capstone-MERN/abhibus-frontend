@@ -1,6 +1,8 @@
+const baseUrl = "http://localhost:8080";
+
 const Endpoints = {
   login: "auth/login",
-  cities: "cities",
+  cities:`${baseUrl}/cities`,
 };
 
 export default Endpoints;

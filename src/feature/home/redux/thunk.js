@@ -11,7 +11,7 @@ export async function fetchCities(dispatch) {
   dispatch(
     updateCitiesApiStatus({
       apiStatus: success ? ApiStatus.success : ApiStatus.error,
-      data,
+      data: data?.cities,
     })
   );
 }
