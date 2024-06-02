@@ -1,33 +1,30 @@
-import { useParams } from "react-router-dom";
 import "./Styles/index.scss";
-import { Filters } from "../filters";
-import Tour from "./Components/Tour";
-import { useSelector } from "react-redux";
+import { FiltersWrapper } from "../filters";
+import { useDispatch, useSelector } from "react-redux";
+import { ToursList } from "./Components/ToursList";
+import { useParams } from "react-router-dom";
+import { toursApiStatusSelector } from "./redux/selectors";
+import { useEffect } from "react";
+import { fetchAllTours } from "./redux/thunk";
+import { ApiStatus } from "../../network/constants";
 
 const Tours = () => {
-  // TODO: data should be coming from the redux store
-  const { sourceCity, sourceCityId, destCity, destCityId,travelDate } = useParams();
+  const { sourceCityId, destCityId, travelDate } = useParams();
+  const apiStatus = useSelector(toursApiStatusSelector);
+  const dispatch = useDispatch();
 
-  const {
-    apiStatus,
-    data: { tours },
-  } = useSelector((state) => state.tours.tours);
-  if (apiStatus === "pending" || apiStatus === "init") {
+  useEffect(() => {
+    dispatch(fetchAllTours(sourceCityId, destCityId, travelDate));
+  }, []);
+
+  if (apiStatus === ApiStatus.pending || apiStatus === ApiStatus.init) {
     return <h1>Loading..</h1>;
   }
+
   return (
     <div className="root-tours-container">
-      <Filters />
-      <div className="tours_container">
-        {tours.map((tour) => (
-          <Tour
-            key={tour.tourId}
-            tour={tour}
-            sourceCity={sourceCity}
-            destinationCity={destCity}
-          />
-        ))}
-      </div>
+      <FiltersWrapper />
+      <ToursList />
     </div>
   );
 };

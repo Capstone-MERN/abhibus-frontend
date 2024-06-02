@@ -1,32 +1,34 @@
 import { Slider } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSelectedPriceRange } from "./redux/slice";
+import { priceRangeSelector } from "./redux/selectors";
 
 export const PriceRangeSelector = () => {
-  const min = 400,
-    max = 1500;
-  const selectedMin = 600,
-    selectedMax = 900;
+  const { range, selectedRange } = useSelector(priceRangeSelector);
 
-  const onChangeRange = (e) => {
-    console.log(e);
+  const dispatch = useDispatch();
+
+  const onChangeRange = (value) => {
+    dispatch(updateSelectedPriceRange(value));
   };
 
   return (
     <div className="section">
       <span className="title">Price Range</span>
       <div style={styles.fraic}>
-        <span>{selectedMin}</span>
-        <span>{selectedMax}</span>
+        <span>{selectedRange[0]}</span>
+        <span>{selectedRange[1]}</span>
       </div>
       <Slider
-        min={min}
-        max={max}
-        defaultValue={[selectedMin, selectedMax]}
-        onChange={onChangeRange}
-        onChangeComplete={(val) => console.log(val)}
+        range
+        min={range[0]}
+        max={range[1]}
+        defaultValue={[selectedRange[0], selectedRange[0]]}
+        onChangeComplete={onChangeRange}
       />
       <div style={styles.fraic}>
-        <span>{min}</span>
-        <span>{max}</span>
+        <span>{range[0]}</span>
+        <span>{range[1]}</span>
       </div>
     </div>
   );

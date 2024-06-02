@@ -5,15 +5,23 @@ import "../Styles/BottomSection.scss";
 import { useDispatch, useSelector } from "react-redux";
 import SeatLayout from "./SeatLayout";
 import StopSelection from "./StopSelection";
-import { useBoarding, useDropping, useSelectedSeats } from "../redux/selectors";
+import {
+  useBoarding,
+  useDropping,
+  seatLayoutApiStatusSelector,
+  useSelectedSeats,
+} from "../redux/selectors";
 import { removeSeletedTour, setSelectedTour } from "../redux/slice";
+import { fetchSeatLayout } from "../redux/thunk";
+import { ApiStatus } from "../../../network/constants";
+import { Button, Spin } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { setBookingInfo } from "../../Booking/redux/slice";
 
 const BottomSection = ({ availableSeats, tour }) => {
   const [selectedPrice, setSelectedPrice] = useState("all");
-  const { sourceCity, sourceCityId, destCity, destCityId } = useParams();
-  const { tourId, startTime: travelTime, busType, busPartner, duration } = tour;
+  const { sourceCity, destCity } = useParams();
+  const { tourId } = tour;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -87,4 +95,25 @@ const BottomSection = ({ availableSeats, tour }) => {
   );
 };
 
-export default BottomSection;
+const BottomSectionWrapper = ({ availableSeats, tourId }) => {
+  const dispatch = useDispatch();
+  const apiStatus = useSelector((state) =>
+    seatLayoutApiStatusSelector(tourId, state)
+  );
+
+  useEffect(() => {
+    dispatch(fetchSeatLayout(tourId));
+  }, []);
+
+  if (apiStatus === ApiStatus.init || ApiStatus.pending === apiStatus) {
+    return <Spin />;
+  }
+
+  if (apiStatus === ApiStatus.error) {
+    return <Button>Retry</Button>;
+  }
+
+  return <BottomSection availableSeats={availableSeats} tourId={tourId} />;
+};
+
+export default BottomSectionWrapper;

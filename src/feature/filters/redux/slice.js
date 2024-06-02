@@ -6,6 +6,14 @@ export const filterKeys = {
   BUS_PARTNER: "BUS_PARTNER",
   BUS_TYPE: "BUS_TYPE",
   DEPARTURE_TIME: "DEPARTURE_TIME",
+  PRICE_RANGE: "PRICE_RANGE",
+};
+
+export const departureTimeKeys = {
+  MORNING: "MORNING",
+  AFTERNOON: "AFTERNOON",
+  EVENING: "EVENING",
+  NIGHT: "NIGHT",
 };
 
 const filtersSlice = createSlice({
@@ -16,6 +24,10 @@ const filtersSlice = createSlice({
     [filterKeys.BUS_PARTNER]: {},
     [filterKeys.BUS_TYPE]: {},
     [filterKeys.DEPARTURE_TIME]: {},
+    [filterKeys.PRICE_RANGE]: {
+      range: [],
+      selectedRange: [],
+    },
   },
   reducers: {
     updateStop: (state, action) => {
@@ -26,9 +38,17 @@ const filtersSlice = createSlice({
         delete state[identifier][stopId];
       }
     },
+    updatePriceRange: (state, action) => {
+      state[filterKeys.PRICE_RANGE].range = action.payload;
+      state[filterKeys.PRICE_RANGE].selectedRange = action.payload;
+    },
+    updateSelectedPriceRange: (state, action) => {
+      state[filterKeys.PRICE_RANGE].selectedRange = action.payload;
+    },
   },
 });
 
-export const { updateStop } = filtersSlice.actions;
+export const { updateStop, updatePriceRange, updateSelectedPriceRange } =
+  filtersSlice.actions;
 
 export default filtersSlice;

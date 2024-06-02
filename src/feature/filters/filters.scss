@@ -45,3 +45,16 @@
     }
   }
 }
+
+.filter-icon {
+  justify-self: end;
+  padding: 0 20px;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+  background-color: #e3e3e3;
+  cursor: pointer;
+  margin-right: 10px;
+}
