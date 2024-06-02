@@ -1,6 +1,6 @@
 import { ApiStatus } from "../../../network/constants";
 import Endpoints from "../../../network/endpoints";
-import { request } from "../../../network/request";
+import request from "../../../network/request";
 import { updatePriceRange } from "../../filters/redux/slice";
 import { updateSeatLayoutApiStatus, updateToursApiStatus } from "./slice";
 

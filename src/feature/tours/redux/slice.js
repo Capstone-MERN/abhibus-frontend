@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ApiStatus } from "../../../network/constants";
-// import { data, layoutData } from "../dummyData";
 
 const toursSlice = createSlice({
   name: "tours",
