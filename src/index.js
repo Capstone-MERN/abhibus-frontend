@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "./redux/store";
 import Home from "./feature/home";
+import Tours from "./feature/tours";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -13,7 +14,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="" Component={Home} />
-      </Routes> 
+        <Route
+          path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
+          element={<Tours />}
+        />
+      </Routes>
     </BrowserRouter>
   </Provider>
 );
