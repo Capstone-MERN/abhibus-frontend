@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { ACIcon, NonAC, Seater, Sleeper } from "../../components/Icons";
+import { ACIcon, NonAC } from "../../components/Icons";
 import { filterKeys, updateStop } from "./redux/slice";
 
 const busTypes = [
@@ -13,16 +13,17 @@ const busTypes = [
     identifier: "NON_AC",
     icon: <NonAC />,
   },
-  {
-    title: "Seater",
-    identifier: "SEATER",
-    icon: <Seater />,
-  },
-  {
-    title: "Sleeper",
-    identifier: "SLEEPER",
-    icon: <Sleeper />,
-  },
+  // TODO: add below types also in future
+  // {
+  //   title: "Seater",
+  //   identifier: "SEATER",
+  //   icon: <Seater />,
+  // },
+  // {
+  //   title: "Sleeper",
+  //   identifier: "SLEEPER",
+  //   icon: <Sleeper />,
+  // },
 ];
 
 export const BusTypeSelector = () => {

@@ -1,28 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { data, layoutData } from "../dummyData";
+import { ApiStatus } from "../../../network/constants";
+// import { data, layoutData } from "../dummyData";
 
 const toursSlice = createSlice({
   name: "tours",
   initialState: {
     tours: {
-      data: data,
-      // TODO: make it dynamic during api integration
-      apiStatus: "success",
+      data: null,
+      apiStatus: "init",
     },
-    layouts: {
-      54851: {
-        apiStatus: "success",
-        data: layoutData,
-      },
-      54546: {
-        apiStatus: "success",
-        data: layoutData,
-      },
-      97986: {
-        apiStatus: "success",
-        data: layoutData,
-      },
-    },
+    layouts: {},
     selectedTour: {},
   },
   reducers: {
@@ -33,6 +20,7 @@ const toursSlice = createSlice({
       state.selectedTour[action.payload.tourId].boardingPoint =
         action.payload.stop;
     },
+
     toggleDroppingPoint: (state, action) => {
       if (state.selectedTour[action.payload.tourId]?.droppingPoint?.stopId) {
         state.selectedTour[action.payload.tourId].droppingPoint = {};
@@ -61,6 +49,28 @@ const toursSlice = createSlice({
         droppingPoint: {},
       };
     },
+
+    updateToursApiStatus: (state, action) => {
+      const { apiStatus, data } = action.payload;
+      if (apiStatus === ApiStatus.success) {
+        state.tours.data = data;
+      }
+      state.tours.apiStatus = apiStatus;
+    },
+
+    updateSeatLayoutApiStatus: (state, action) => {
+      const { apiStatus, tourId, data } = action.payload;
+      if (!state.layouts[tourId]) {
+        state.layouts[tourId] = {
+          apiStatus,
+        };
+      }
+      state.layouts[tourId].apiStatus = apiStatus;
+      if (apiStatus === ApiStatus.success) {
+        state.layouts[tourId].data = data;
+      }
+    },
+
     removeSeletedTour: (state, action) => {
       delete state.selectedTour[action.payload.tourId];
     },
@@ -73,6 +83,8 @@ export const {
   toggleSeatSelection,
   setSelectedTour,
   removeSeletedTour,
+  updateToursApiStatus,
+  updateSeatLayoutApiStatus,
 } = toursSlice.actions;
 
 export default toursSlice;

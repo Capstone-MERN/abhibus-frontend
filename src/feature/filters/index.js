@@ -6,16 +6,18 @@ import { filterKeys } from "./redux/slice";
 import { PriceRangeSelector } from "./PriceRangeSelector";
 import { BusTypeSelector } from "./BusTypeSelector";
 import { DepartureTimeSelector } from "./DepartureTimeSelector";
+import { Drawer } from "antd";
+import { useState } from "react";
+import {
+  boardingAndDroppingPointsSelector,
+  uniqueBusPartnersSelector,
+} from "./redux/selectors";
 
-export const Filters = () => {
+const Filters = () => {
   const { boardingPoints, droppingPoints } = useSelector(
-    (state) => state.tours?.tours?.data
+    boardingAndDroppingPointsSelector
   );
-  const buspartners = useSelector((state) => {
-    return new Set(
-      state.tours?.tours?.data?.tours?.map(({ busPartner }) => busPartner)
-    );
-  });
+  const buspartners = useSelector(uniqueBusPartnersSelector);
 
   return (
     <div className="filters-container">
@@ -44,5 +46,37 @@ export const Filters = () => {
         />
       </Accordion>
     </div>
+  );
+};
+
+export const FiltersWrapper = () => {
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const screenWidth = window.innerWidth;
+
+  return (
+    <>
+      {screenWidth <= 600 ? (
+        <>
+          <button
+            className="material-icons filter-icon"
+            onClick={() => setOpenDrawer(true)}
+          >
+            filter_list
+          </button>
+          <Drawer
+            width={screenWidth - 20}
+            title="Apply Filters"
+            open={openDrawer}
+            closable
+            onClose={() => setOpenDrawer(false)}
+            styles={{ body: { padding: 0 } }}
+          >
+            <Filters />
+          </Drawer>
+        </>
+      ) : (
+        <Filters />
+      )}
+    </>
   );
 };

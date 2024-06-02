@@ -1,26 +1,26 @@
 import { useDispatch } from "react-redux";
 import { AfterNoon, Evening, Morining, Night } from "../../components/Icons";
-import { filterKeys, updateStop } from "./redux/slice";
+import { departureTimeKeys, filterKeys, updateStop } from "./redux/slice";
 
 const departureTimes = [
   {
     title: "Before 10AM",
-    identifier: "MORNING",
+    identifier: departureTimeKeys.MORNING,
     icon: <Morining />,
   },
   {
     title: "10AM - 5PM",
-    identifier: "AFTERNOON",
+    identifier: departureTimeKeys.AFTERNOON,
     icon: <AfterNoon />,
   },
   {
     title: "5PM - 11PM",
-    identifier: "EVENING",
+    identifier: departureTimeKeys.EVENING,
     icon: <Evening />,
   },
   {
     title: "After 11PM",
-    identifier: "NIGHT",
+    identifier: departureTimeKeys.NIGHT,
     icon: <Night />,
   },
 ];

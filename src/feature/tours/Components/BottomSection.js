@@ -5,8 +5,14 @@ import "../Styles/BottomSection.scss";
 import { useDispatch, useSelector } from "react-redux";
 import SeatLayout from "./SeatLayout";
 import StopSelection from "./StopSelection";
-import { useSelectedSeats } from "../redux/selectors";
+import {
+  seatLayoutApiStatusSelector,
+  useSelectedSeats,
+} from "../redux/selectors";
 import { removeSeletedTour, setSelectedTour } from "../redux/slice";
+import { fetchSeatLayout } from "../redux/thunk";
+import { ApiStatus } from "../../../network/constants";
+import { Button, Spin } from "antd";
 
 const BottomSection = ({ availableSeats, tourId }) => {
   const [selectedPrice, setSelectedPrice] = useState("all");
@@ -25,7 +31,6 @@ const BottomSection = ({ availableSeats, tourId }) => {
     return () => dispatch(removeSeletedTour({ tourId }));
   }, []);
 
-  
   if (apiStatus === "init" || apiStatus === "pending" || !layout)
     return <h1>Loading...</h1>;
 
@@ -62,5 +67,25 @@ const BottomSection = ({ availableSeats, tourId }) => {
   );
 };
 
+const BottomSectionWrapper = ({ availableSeats, tourId }) => {
+  const dispatch = useDispatch();
+  const apiStatus = useSelector((state) =>
+    seatLayoutApiStatusSelector(tourId, state)
+  );
 
-export default BottomSection;
+  useEffect(() => {
+    dispatch(fetchSeatLayout(tourId));
+  }, []);
+
+  if (apiStatus === ApiStatus.init || ApiStatus.pending === apiStatus) {
+    return <Spin />;
+  }
+
+  if (apiStatus === ApiStatus.error) {
+    return <Button>Retry</Button>;
+  }
+
+  return <BottomSection availableSeats={availableSeats} tourId={tourId} />;
+};
+
+export default BottomSectionWrapper;

@@ -13,6 +13,7 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
   const { boardingPoints, droppingPoints } = useSelector((state) =>
     stopPointsSelector(state, tour.tourId)
   );
+
   const toggleLayout = () => {
     setShowLayout(!showLayout);
   };
