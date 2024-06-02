@@ -4,3 +4,8 @@ export const ApiStatus = {
   success: "success",
   error: "error",
 };
+
+export const RequestMethods = {
+  POST: "POST",
+  GET: "GET",
+};

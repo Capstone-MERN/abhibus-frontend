@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import SeatLayout from "./SeatLayout";
 import StopSelection from "./StopSelection";
 import {
+  useBoarding,
+  useDropping,
   seatLayoutApiStatusSelector,
   useSelectedSeats,
 } from "../redux/selectors";
@@ -13,16 +15,24 @@ import { removeSeletedTour, setSelectedTour } from "../redux/slice";
 import { fetchSeatLayout } from "../redux/thunk";
 import { ApiStatus } from "../../../network/constants";
 import { Button, Spin } from "antd";
+import { useNavigate, useParams } from "react-router-dom";
+import { setBookingInfo } from "../../Booking/redux/slice";
 
-const BottomSection = ({ availableSeats, tourId }) => {
+const BottomSection = ({ availableSeats, tour }) => {
   const [selectedPrice, setSelectedPrice] = useState("all");
+  const { sourceCity, destCity } = useParams();
+  const { tourId } = tour;
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     apiStatus,
     data: { layout },
   } = useSelector((state) => state.tours.layouts[tourId]);
 
+  const boarding = useBoarding(tourId);
+  const dropping = useDropping(tourId);
   const selectedSeats = useSelectedSeats(tourId);
 
   useEffect(() => {
@@ -46,6 +56,20 @@ const BottomSection = ({ availableSeats, tourId }) => {
     setSelectedPrice(price);
   };
 
+  const handleContinueClick = () => {
+    dispatch(
+      setBookingInfo({
+        sourceCity,
+        destCity,
+        service: tour,
+        boarding,
+        dropping,
+        seats: selectedSeats,
+      })
+    );
+    navigate(`/passengerInfo`);
+  };
+
   return (
     <div className="layout_container">
       <SeatIndicators availableSeats={availableSeats} />
@@ -61,7 +85,11 @@ const BottomSection = ({ availableSeats, tourId }) => {
           tourId={tourId}
           selectedPrice={selectedPrice}
         />
-        <StopSelection key={tourId} tourId={tourId} />
+        <StopSelection
+          key={tourId}
+          tourId={tourId}
+          handleContinueClick={handleContinueClick}
+        />
       </div>
     </div>
   );

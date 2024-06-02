@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const request = async (httpConfig) => {
+const request = async (httpConfig) => {
   const token = localStorage.getItem("token");
   try {
     const response = await axios({
@@ -16,7 +16,8 @@ export const request = async (httpConfig) => {
     });
     return { success: true, data: response.data };
   } catch (error) {
-    console.warn("Network Error :", error);
-    return { success: false, data: error?.message };
+    return { success: false, data: error.message ?? "Something went wrong!!!" };
   }
 };
+
+export default request;
