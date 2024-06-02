@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { SeatIcon } from "./constantfuncs";
 import { Tooltip } from "antd";
 import MyToolTip from "./MyTooltip";
+import { SeatIcon } from "../../../components/icons2";
 
 const Seat = ({ seat, onSelectSeat, selectedPrice }) => {
   const [selected, setSelected] = useState(false);

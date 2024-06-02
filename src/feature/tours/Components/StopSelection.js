@@ -9,8 +9,9 @@ import SelectedSeatCard from "./SelectedSeatCard";
 import Stops from "./Stops";
 import { toggleBoardingPoint, toggleDroppingPoint } from "../redux/slice";
 
-const StopSelection = ({ tourId }) => {
+const StopSelection = ({ tourId, handleContinueClick }) => {
   const dispatch = useDispatch();
+
   const { boardingPoints, droppingPoints } = useSelector((state) =>
     stopPointsSelector(state, tourId)
   );
@@ -46,6 +47,7 @@ const StopSelection = ({ tourId }) => {
           boarding={boarding}
           dropping={dropping}
           selectedSeats={selectedSeats}
+          handleContinueClick={handleContinueClick}
         />
       </div>
     </div>

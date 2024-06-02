@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const Tours = () => {
   // TODO: data should be coming from the redux store
-  const { sourceCity, sourceCityId, destCity, destCityId } = useParams();
+  const { sourceCity, sourceCityId, destCity, destCityId,travelDate } = useParams();
 
   const {
     apiStatus,

@@ -1,6 +1,6 @@
-import { SteeringIcon } from "./constantfuncs";
 import Seat from "./Seat";
 import "../Styles/Deck.scss";
+import { SteeringIcon } from "../../../components/icons2";
 
 export const DeckTypes = {
   LOWER: "LOWER",
