@@ -1,7 +1,8 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const request = async (httpConfig) => {
-  const token = localStorage.getItem("token");
+  const token = Cookies.get("token");
   try {
     const response = await axios({
       url: httpConfig.url,

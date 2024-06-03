@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Amenities from "./Amenities";
 import BoardingsAndDroppings from "./BoardingsAndDroppings";
 import "../Styles/Tour.scss";
-import {  formatDate, formatTime } from "./constantfuncs";
-import BottomSection from "./BottomSection";
+import { formatDate, formatTime } from "./constantfuncs";
+import BottomSectionWrapper from "./BottomSection";
 import { useSelector } from "react-redux";
 import { stopPointsSelector } from "../redux/selectors";
 import { CircleIcon } from "../../../components/icons2";
@@ -74,7 +74,10 @@ const Tour = ({ tour, sourceCity, destinationCity }) => {
       </div>
       {showLayout && (
         <div className="layout">
-          <BottomSection availableSeats={tour.availableSeats} tour={tour} />
+          <BottomSectionWrapper
+            availableSeats={tour.availableSeats}
+            tour={tour}
+          />
         </div>
       )}
     </div>

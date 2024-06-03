@@ -5,11 +5,12 @@ import PassengerDetails from "./Components/PassengerDetails";
 import { useDispatch, useSelector } from "react-redux";
 import Accordion from "./Components/Accordion";
 import FareDetails from "./Components/FareDetails";
-import { useState } from "react";
-import { bookTour } from "./redux/slice";
-import { message } from "antd";
+import { useEffect, useState } from "react";
+import { bookTour, setBookingInfo } from "./redux/slice";
+import { Spin, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./Styles/index.scss";
+import { saveBooking } from "./redux/thunk";
 
 const Booking = () => {
   const [totalAmount, setTotalAmount] = useState("");
@@ -17,46 +18,40 @@ const Booking = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const booking = useSelector((state) => state.booking);
 
-  localStorage.setItem("booking", JSON.stringify(booking));
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const bookCurrentTour = async (bookingData) => {
-    const result = await dispatch(bookTour(bookingData));
-    if (bookTour.fulfilled.match(result)) {
-      message.success("Booking Successful!");
-      navigate("/home");
-    } else {
-      message.error(result.payload || "Booking Failed");
-    }
-  };
+  // const bookCurrentTour = async (bookingData) => {
+  //   const result = await dispatch(bookTour(bookingData));
+  //   if (bookTour.fulfilled.match(result)) {
+  //     message.success("Booking Successful!");
+  //     navigate("/");
+  //   } else {
+  //     message.error(result.payload || "Booking Failed");
+  //   }
+  // };
 
   const setAmount = (amount) => setTotalAmount(amount);
 
-  const handleSubmition = (data) => {
-    const map = new Map();
-
-    Object.keys(data).map((key) => {
-      const [seatNumer, val] = key.split("_");
-      map[seatNumer] = map[seatNumer] ? map[seatNumer] : {};
-      if (val === "gender") {
-        map[seatNumer][val] = data[key] ?? "M";
-      } else map[seatNumer][val] = data[key];
-      map[seatNumer]["seatNumber"] = seatNumer;
-    });
-
-    const seats = [];
-    for (let value of Object.values(map)) {
-      seats.push(value);
-    }
-
-    const bookingData = {
-      tourId: booking.service.tourId,
-      seats,
-    };
-    bookCurrentTour(bookingData);
+  const handleSubmition = (formData) => {
+    console.log(formData);
+    dispatch(saveBooking(formData));
   };
+
+  useEffect(() => {
+    if (booking.service) {
+      localStorage.setItem("booking", JSON.stringify(booking));
+    } else if (localStorage.getItem("booking")) {
+      const bookingInfo = JSON.parse(localStorage.getItem("booking"));
+      dispatch(setBookingInfo(bookingInfo));
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+  if (!booking?.service) {
+    return <Spin />;
+  }
 
   return (
     <>

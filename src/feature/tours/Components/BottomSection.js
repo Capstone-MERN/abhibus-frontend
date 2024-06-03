@@ -95,14 +95,14 @@ const BottomSection = ({ availableSeats, tour }) => {
   );
 };
 
-const BottomSectionWrapper = ({ availableSeats, tourId }) => {
+const BottomSectionWrapper = ({ availableSeats, tour }) => {
   const dispatch = useDispatch();
   const apiStatus = useSelector((state) =>
-    seatLayoutApiStatusSelector(tourId, state)
+    seatLayoutApiStatusSelector(tour.tourId, state)
   );
 
   useEffect(() => {
-    dispatch(fetchSeatLayout(tourId));
+    dispatch(fetchSeatLayout(tour.tourId));
   }, []);
 
   if (apiStatus === ApiStatus.init || ApiStatus.pending === apiStatus) {
@@ -113,7 +113,7 @@ const BottomSectionWrapper = ({ availableSeats, tourId }) => {
     return <Button>Retry</Button>;
   }
 
-  return <BottomSection availableSeats={availableSeats} tourId={tourId} />;
+  return <BottomSection availableSeats={availableSeats} tour={tour} />;
 };
 
 export default BottomSectionWrapper;

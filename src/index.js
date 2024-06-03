@@ -7,20 +7,28 @@ import store from "./redux/store";
 import Home from "./feature/home";
 import Tours from "./feature/tours";
 import Booking from "./feature/Booking";
+import { GlobalNotifier } from "./components/GlobalNotifier";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="" Component={Home} />
-        <Route
-          path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
-          element={<Tours />}
-        />
-        <Route path="passengerInfo" element={<Booking />} />
-      </Routes>
-    </BrowserRouter>
-  </Provider>
-);
+const App = () => {
+  return (
+    <>
+      <GlobalNotifier />
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="" Component={Home} />
+            <Route
+              path="bus_search/:sourceCity/:sourceCityId/:destCity/:destCityId/:travelDate"
+              element={<Tours />}
+            />
+            <Route path="passengerInfo" element={<Booking />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </>
+  );
+};
+
+root.render(<App />);

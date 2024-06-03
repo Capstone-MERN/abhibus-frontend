@@ -3,13 +3,11 @@ import axios from "axios";
 import Endpoints from "../../../network/endpoints";
 import Cookies from "js-cookie";
 
-const API = process.env.REACT_APP_API_URI;
-
 export const signup = createAsyncThunk(
   Endpoints.signup,
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API}${Endpoints.signup}`, userData);
+      const response = await axios.post(Endpoints.signup, userData);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -27,10 +25,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${API}${Endpoints.login}`,
-        credentials
-      );
+      const response = await axios.post(Endpoints.login, credentials);
       Cookies.set("token", response.data.data.token, { expires: 7 });
       return response.data;
     } catch (error) {

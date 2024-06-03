@@ -1,11 +1,13 @@
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://bookmybus-jhyi.onrender.com/";
+
+// Local URL: "http://localhost:8080";
 
 const Endpoints = {
-  login: "auth/login",
+  login: `${baseUrl}/auth/login`,
   tours: `${baseUrl}/tour/tours`,
   seatLayout: `${baseUrl}/bus/layout`,
-  signup: "auth/signup",
-  book: "ticket/book",
+  signup: `${baseUrl}/auth/signup`,
+  book: `${baseUrl}/ticket/book`,
   cities: `${baseUrl}/cities`,
 };
 

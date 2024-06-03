@@ -23,7 +23,7 @@ export const PriceRangeSelector = () => {
         range
         min={range[0]}
         max={range[1]}
-        defaultValue={[selectedRange[0], selectedRange[0]]}
+        defaultValue={[selectedRange[0], selectedRange[1]]}
         onChangeComplete={onChangeRange}
       />
       <div style={styles.fraic}>
