@@ -1,4 +1,4 @@
-const baseUrl = "https://bookmybus-jhyi.onrender.com/";
+const baseUrl = "https://bookmybus-jhyi.onrender.com";
 
 // Local URL: "http://localhost:8080";
 
